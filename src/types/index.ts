@@ -47,11 +47,11 @@ export interface Experience {
   media?: MediaItem[];
 }
 
-export interface ExtracurricularLinks {
+export interface OrganizationLinks {
   org?: string;
 }
 
-export interface Extracurricular {
+export interface Organization {
   name: string;
   role: string;
   start: string;
@@ -59,7 +59,7 @@ export interface Extracurricular {
   location: string;
   achievements: string[];
   logo: string;
-  links?: ExtracurricularLinks;
+  links?: OrganizationLinks;
   media?: MediaItem[];
 }
 

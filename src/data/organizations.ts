@@ -13,11 +13,11 @@ export const organizations: Organization[] = [
       "Drove membership growth by 35+ through strategic promotion at Opening Knight and the Knight Hacks RSO Fair",
       "Established a centralized Notion workspace for 6 officers to streamline event planning and operations by 50%"
     ],
-    logo: "/images/organization/gpk-logo.png",
+    logo: "/images/organizations/gpk-logo.png",
     links: { org: "https://knightconnect.campuslabs.com/engage/organization/graphicsprogrammingknights" },
     media: [
-      { type: "image", src: "/images/organization/gpk-renderjam.png", alt: "GPK Render Jam Event" },
-      { type: "image", src: "/images/organization/gpk-workshop.png", alt: "GPK x KH Workshop" }],
+      { type: "image", src: "/images/organizations/gpk-renderjam.png", alt: "GPK Render Jam Event" },
+      { type: "image", src: "/images/organizations/gpk-workshop.png", alt: "GPK x KH Workshop" }],
   },
   {
     name: "Knight Hacks",
@@ -34,10 +34,10 @@ export const organizations: Organization[] = [
       "Knight Hacks VII (October 2024)", 
       "Workshops (Fall 2024 - Present)",
     ],
-    logo: "/images/organization/kh-logo.png",
+    logo: "/images/organizations/kh-logo.png",
     links: { org: "https://club.knighthacks.org/" },
     media: [
-      { type: "image", src: "/images/organization/placeholder.png", alt: "Placeholder image" }],
+      { type: "image", src: "/images/organizations/placeholder.png", alt: "Placeholder image" }],
   },
   {
     name: "Society of Hispanic Professional Engineers (SHPE) UCF",
@@ -48,10 +48,10 @@ export const organizations: Organization[] = [
     achievements: [
       "Placeholder text",
     ],
-    logo: "/images/organization/shpe-logo.png",
+    logo: "/images/organizations/shpe-logo.png",
     links: { org: "https://shpe.org/" },
     media: [
-      { type: "image", src: "/images/organization/placeholder.png", alt: "Placeholder image" }],
+      { type: "image", src: "/images/organizations/placeholder.png", alt: "Placeholder image" }],
 
   },
   {
@@ -63,10 +63,10 @@ export const organizations: Organization[] = [
     achievements: [
       "Placeholder text",
     ],
-    logo: "/images/organization/colorstack-logo.png",
+    logo: "/images/organizations/colorstack-logo.png",
     links: { org: "https://www.colorstack.org/" },
     media: [
-      { type: "image", src: "/images/organization/placeholder.png", alt: "Placeholder image" }],
+      { type: "image", src: "/images/organizations/placeholder.png", alt: "Placeholder image" }],
 
   },
   {
@@ -78,10 +78,10 @@ export const organizations: Organization[] = [
     achievements: [
       "Placeholder text",
     ],
-    logo: "/images/organization/excel-logo.png",
+    logo: "/images/organizations/excel-logo.png",
     links: { org: "https://excel.ucf.edu/" },
     media: [
-      { type: "image", src: "/images/organization/placeholder.png", alt: "Placeholder image" }],
+      { type: "image", src: "/images/organizations/placeholder.png", alt: "Placeholder image" }],
 
   },
 ];
