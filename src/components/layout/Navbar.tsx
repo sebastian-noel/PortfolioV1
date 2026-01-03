@@ -15,11 +15,11 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <nav className="sticky top-0 z-50 border-b border-[color:var(--color-secondary)] bg-[color:var(--color-background)]/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Name */}
-          <Link href="/" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+          <Link href="/" className="text-xl font-bold text-[color:var(--color-text)] hover:text-[color:var(--color-primary)] transition-colors">
             Sebastian Noel
           </Link>
 
@@ -30,10 +30,10 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-sm font-medium transition-colors hover:text-blue-600',
+                  'text-sm font-medium transition-colors text-[color:var(--color-text)] hover:text-[color:var(--color-accent)]',
                   pathname === link.href
-                    ? 'text-blue-600 border-b-2 border-blue-600'
-                    : 'text-gray-700'
+                    ? 'text-[color:var(--color-accent)] border-b-2 border-[color:var(--color-accent)]'
+                    : 'border-b-2 border-transparent'
                 )}
               >
                 {link.label}

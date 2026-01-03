@@ -12,6 +12,7 @@ export interface MediaItem {
   type: MediaType;
   src: string;
   alt: string;
+  description?: string;
 }
 
 export interface ProjectLinks {
@@ -75,7 +76,7 @@ export interface HeroContent {
   blurb: string;
   location: string;
   headshot: string;
-  carousel: string[];
+  carousel: MediaItem[];
   hobbies: Hobby[];
   social: SocialLinks;
 }

@@ -4,11 +4,11 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Sebastian Noel | Software Engineering Portfolio",
-  description: "Computer Science sophomore at University of Central Florida seeking software engineering internships. View my projects, experience, and organizations.",
+  title: "Sebastian Noel | Portfolio",
+  description: "Software Engineer and Computer Science student at University of Central Florida. View my experience, projects, and organizations that I am apart of to learn more!",
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${inter.variable}`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

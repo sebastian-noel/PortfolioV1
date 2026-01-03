@@ -9,7 +9,7 @@ const socialIcons = {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="border-t border-[color:var(--color-secondary)] bg-[color:var(--color-background)] text-[color:var(--color-text)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col items-center space-y-4">
           {/* Social Links */}
@@ -23,7 +23,7 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                  className="text-[color:var(--color-text)] hover:text-[color:var(--color-accent)] transition-colors"
                   aria-label={key}
                 >
                   <Icon className="w-6 h-6" />
@@ -33,8 +33,8 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} {heroContent.name}. Built with Next.js & TypeScript.
+          <p className="text-sm text-[color:var(--color-text)]/80">
+            © {new Date().getFullYear()} {heroContent.name}. All rights reserved.
           </p>
         </div>
       </div>
