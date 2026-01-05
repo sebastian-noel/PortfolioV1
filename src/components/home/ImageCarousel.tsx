@@ -72,7 +72,7 @@ export default function ImageCarousel() {
           <div className="flex -mx-2">
             {slides.map((src, idx) => (
               <div
-                className="relative aspect-[4/3] min-w-[280px] flex-[0_0_70%] sm:flex-[0_0_45%] lg:flex-[0_0_32%] px-2 cursor-pointer"
+                className="relative aspect-[4/3] min-w-[320px] flex-[0_0_75%] sm:flex-[0_0_55%] lg:flex-[0_0_40%] px-2 cursor-pointer"
                 key={`${src.src}-${idx}`}
                 onClick={() => openSlide(idx)}
                 role="button"
@@ -81,13 +81,13 @@ export default function ImageCarousel() {
                   if (e.key === 'Enter' || e.key === ' ') openSlide(idx);
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-2xl">
+                <div className="relative h-full w-full overflow-hidden rounded-2xl group">
                   <Image
                     src={src.src}
                     alt={src.alt}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 32vw"
+                    className="object-cover transition-transform duration-450 group-hover:scale-105"
+                    sizes="(max-width: 640px) 75vw, (max-width: 1024px) 55vw, 40vw"
                     priority={idx === 0}
                   />
                 </div>

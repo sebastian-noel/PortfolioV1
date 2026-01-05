@@ -34,6 +34,7 @@ export interface Project {
 
 export interface ExperienceLinks {
   company?: string;
+  linkedin?: string;
 }
 
 export interface Experience {
@@ -42,7 +43,9 @@ export interface Experience {
   start: string;
   end: string;
   location: string;
+  description: string;
   achievements: string[];
+  technologies: string[];
   logo: string;
   links?: ExperienceLinks;
   media?: MediaItem[];

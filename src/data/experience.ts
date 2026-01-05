@@ -7,9 +7,12 @@ export const experiences: Experience[] = [
     start: "January 2026",
     end: "Present",
     location: "Orlando, FL",
+    description:
+      "Spring 2026 Applied Technology in Banking Experiential Intern at BNY's Client Technology and Operations Center.",
     achievements: [
-      "Spring 2026 Applied Technology in Banking Experiential Intern"
+      "Spring 2026 Applied Technology in Banking Experiential Intern",
     ],
+    technologies: ["Python", "SQL", "Cloud Computing"],
     logo: "/images/experience/bny-logo.png",
     links: { company: "https://www.bny.com/corporate/global/" },
     media: [
@@ -23,9 +26,12 @@ export const experiences: Experience[] = [
     start: "January 2026",
     end: "Present",
     location: "Orlando, FL",
+    description:
+      "Spring 2026 Undergraduate Computer Vision Researcher under Dr. Yogesh S Rawat, focusing on video understanding and action recognition.",
     achievements: [
-      "Spring 2026 Undergraduate Computer Vision Researcher under Dr. Yogesh S Rawat"
+      "Spring 2026 Undergraduate Computer Vision Researcher under Dr. Yogesh S Rawat",
     ],
+    technologies: ["Python", "PyTorch", "Computer Vision", "Deep Learning"],
     logo: "/images/experience/crcv-logo.png",
     links: { company: "https://www.crcv.ucf.edu/" },
     media: [
@@ -38,13 +44,16 @@ export const experiences: Experience[] = [
     start: "June 2024",
     end: "August 2024",
     location: "Remote",
+    description:
+      "Conducted research on multimodal deep learning for photovoltaic module analysis, implementing machine learning models for voltage prediction and defect detection.",
     achievements: [
       "Co-authored (as 2nd author) a research paper on the Multimodal Deep Learning for Photovoltaic Modules (in progress)",
       "Improved voltage prediction accuracy from 51% to 77% by implementing wavelet-enhanced LSTM models",
-      "Achieved an R2 of 53% and MAE of 0.89 for crack defect prediction using Multi-Layer Perceptrons (MLPs)",
+      "Achieved an R² of 53% and MAE of 0.89 for crack defect prediction using Multi-Layer Perceptrons (MLPs)",
       "Engineered an image processing pipeline using Marimo notebooks, reducing data processing time by 25%",
-      "Architected a foundational Python package by refactoring 14 scripts to accelerate future research and development"
+      "Architected a foundational Python package by refactoring 14 scripts to accelerate future research and development",
     ],
+    technologies: ["Python", "PyTorch", "LSTM", "MLP", "Marimo", "NumPy", "Pandas"],
     logo: "/images/experience/dpv-logo.jpg",
     links: { company: "https://ucf-dpv.notion.site/DARTS-2025-2498d52e715180b18c7fd1065e655faf?p=2498d52e7151801d89c8f4d5ea1a9ac7&pm=c" },
     media: [
