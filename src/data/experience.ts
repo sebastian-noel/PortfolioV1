@@ -3,7 +3,7 @@ import { type Experience } from "@/types";
 export const experiences: Experience[] = [
   {
     company: "Bank of New York Mellon (BNY)",
-    role: "Incoming Applied Technology Intern",
+    role: "Applied Technology Intern",
     start: "January 2026",
     end: "Present",
     location: "Orlando, FL",
@@ -14,7 +14,9 @@ export const experiences: Experience[] = [
     ],
     technologies: ["Python", "SQL", "Cloud Computing"],
     logo: "/images/experience/bny-logo.png",
-    links: { company: "https://www.bny.com/corporate/global/" },
+    links: [
+      { label: "Company Website", url: "https://www.bny.com/corporate/global/" },
+    ],
     media: [
       { type: "image", src: "/images/experience/bny-office.jpg", alt: "BNY CTOC Lab" },
       { type: "image", src: "/images/experience/bny-ucf.jpg", alt: "BNY x UCF Collaboration" },
@@ -22,7 +24,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Center for Research in Computer Vision",
-    role: "Incoming Computer Vision Engineer Intern",
+    role: "Computer Vision Engineer Intern",
     start: "January 2026",
     end: "Present",
     location: "Orlando, FL",
@@ -32,8 +34,10 @@ export const experiences: Experience[] = [
       "Spring 2026 Undergraduate Computer Vision Researcher under Dr. Yogesh S Rawat",
     ],
     technologies: ["Python", "PyTorch", "Computer Vision", "Deep Learning"],
-    logo: "/images/experience/crcv-logo.png",
-    links: { company: "https://www.crcv.ucf.edu/" },
+    logo: "/images/experience/crcv-logo.jpg",
+    links: [
+      { label: "Company Website", url: "https://www.crcv.ucf.edu/" },
+    ],
     media: [
       { type: "image", src: "/images/experience/crcv-building.jpg", alt: "CRCV Research Lab in L3Harris Engineering Center" },
     ],
@@ -55,7 +59,9 @@ export const experiences: Experience[] = [
     ],
     technologies: ["Python", "PyTorch", "LSTM", "MLP", "Marimo", "NumPy", "Pandas"],
     logo: "/images/experience/dpv-logo.jpg",
-    links: { company: "https://ucf-dpv.notion.site/DARTS-2025-2498d52e715180b18c7fd1065e655faf?p=2498d52e7151801d89c8f4d5ea1a9ac7&pm=c" },
+    links: [
+      { label: "Research Program", url: "https://ucf-dpv.notion.site/DARTS-2025-2498d52e715180b18c7fd1065e655faf?p=2498d52e7151801d89c8f4d5ea1a9ac7&pm=c" },
+    ],
     media: [
       { type: "image", src: "/images/experience/dpv-team.jpg", alt: "DPV DARTS Showcase" },
     ],

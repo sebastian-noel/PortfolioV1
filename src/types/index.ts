@@ -33,8 +33,8 @@ export interface Project {
 }
 
 export interface ExperienceLinks {
-  company?: string;
-  linkedin?: string;
+  label: string;
+  url: string;
 }
 
 export interface Experience {
@@ -47,7 +47,7 @@ export interface Experience {
   achievements: string[];
   technologies: string[];
   logo: string;
-  links?: ExperienceLinks;
+  links?: ExperienceLinks[];
   media?: MediaItem[];
 }
 
