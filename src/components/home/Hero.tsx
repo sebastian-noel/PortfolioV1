@@ -32,7 +32,7 @@ export default function Hero() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-medium text-[color:var(--color-text)] shadow-sm transition hover:-translate-y-[5px] hover:shadow md:text-base"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:-translate-y-1.25 hover:shadow md:text-base"
                   aria-label={label}
                 >
                   <Icon className="h-4 w-4 text-accent" />

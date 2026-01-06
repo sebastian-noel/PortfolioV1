@@ -1,13 +1,13 @@
 export default function About() {
   return (
-    <section className="bg-[color:var(--color-background)] text-[color:var(--color-text)] py-12">
+    <section className="bg-background text-foreground py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="space-y-2">
           <h2 className="text-3xl sm:text-4xl font-bold">About me</h2>
-          <div className="h-1 w-20 bg-[color:var(--color-accent)] rounded-full"></div>
+          <div className="h-1 w-20 bg-accent rounded-full"></div>
         </div>
 
-        <div className="space-y-6 text-lg leading-relaxed text-[color:var(--color-text)]/85">
+        <div className="space-y-6 text-lg leading-relaxed text-(--color-text)/85">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           </p>
