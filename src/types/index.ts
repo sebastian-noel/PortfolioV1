@@ -51,21 +51,7 @@ export interface Experience {
   media?: MediaItem[];
 }
 
-export interface OrganizationLinks {
-  org?: string;
-}
 
-export interface Organization {
-  name: string;
-  role: string;
-  start: string;
-  end: string;
-  location: string;
-  achievements: string[];
-  logo: string;
-  links?: OrganizationLinks;
-  media?: MediaItem[];
-}
 
 export interface Hobby {
   title: string;

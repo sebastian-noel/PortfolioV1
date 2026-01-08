@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Sebastian Noel | Portfolio",
-  description: "Software Engineer and Computer Science student at University of Central Florida. View my experience, projects, and organizations that I am apart of to learn more!",
+  description: "Software Engineer and Computer Science student at University of Central Florida. View my experience and projects to learn more!",
 };
 
 export default function RootLayout({

@@ -66,5 +66,55 @@ export const experiences: Experience[] = [
       { type: "image", src: "/images/experience/dpv-team.jpg", alt: "DPV DARTS Showcase" },
     ],
   },
+  {
+    company: "Graphics Programming Knights",
+    role: "Co-founder & Secretary",
+    start: "July 2025",
+    end: "Present",
+    location: "Orlando, FL",
+    description:
+      "Co-founded and lead a nonprofit student organization focused on graphics programming, fostering an inclusive community for aspiring game developers and graphics enthusiasts.",
+    achievements: [
+      "Co-founded and scaled a nonprofit student organization to 160+ members, fostering an inclusive community",
+      "Coordinated Render Jam event logistics and management for over 40 participants, culminating in 5 completed projects",
+      "Drove membership growth by 35+ through strategic promotion at Opening Knight and the Knight Hacks RSO Fair",
+      "Established a centralized Notion workspace for 6 officers to streamline event planning and operations by 50%",
+    ],
+    technologies: ["OpenGL", "Vulkan", "C++", "Game Development"],
+    logo: "/images/experience/gpk-logo.png",
+    links: [
+      { label: "KnightConnect", url: "https://knightconnect.campuslabs.com/engage/organization/graphicsprogrammingknights" },
+    ],
+    media: [
+      { type: "image", src: "/images/experience/gpk-renderjam.png", alt: "GPK Render Jam Event" },
+      { type: "image", src: "/images/experience/gpk-workshop.png", alt: "GPK x KH Workshop" },
+    ],
+  },
+  {
+    company: "Knight Hacks",
+    role: "Mentee",
+    start: "September 2024",
+    end: "Present",
+    location: "Orlando, FL",
+    description:
+      "Active member and mentee at UCF's premier hackathon organization, participating in workshops, hackathons, and mentorship programs.",
+    achievements: [
+      "Operation Meetings (Fall 2025)",
+      "Kickstart Mentorship (Fall 2025)",
+      "Knight Hacks VIII (Oct 2025)",
+      "GemiKnights (Jun 2025)",
+      "Project Launch (Spring 2025)",
+      "Knight Hacks VII (October 2024)",
+      "Workshops (Fall 2024 - Present)",
+    ],
+    technologies: ["React", "TypeScript", "Python", "Hackathons"],
+    logo: "/images/experience/kh-logo.png",
+    links: [
+      { label: "Club Website", url: "https://club.knighthacks.org/" },
+    ],
+    media: [
+      { type: "image", src: "/images/experience/kh-kickstart.jpg", alt: "Knight Hacks Kickstart Mentorship" }
+    ],
+  },
 ];
 

@@ -8,7 +8,6 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
   { href: '/experience', label: 'Experience' },
-  { href: '/organizations', label: 'Organizations' },
 ];
 
 export default function Navbar() {
