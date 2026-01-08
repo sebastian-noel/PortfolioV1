@@ -40,22 +40,24 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
   };
 
   return (
-    <div className="relative flex gap-8">
-      {/* Timeline date on the side */}
-      <div className="hidden md:flex flex-col items-end w-40 shrink-0 pt-2">
-        <span className="text-sm font-medium text-primary">{start}</span>
-        <span className="text-xs text-(--color-text)/60">to</span>
-        <span className="text-sm font-medium text-primary">{end}</span>
+    <div className="relative mb-10">
+      {/* Timeline - positioned absolutely on the left */}
+      <div className="hidden md:flex absolute -left-4 top-0 bottom-0 items-start gap-2">
+        {/* Date */}
+        <div className="flex flex-col items-end w-28 pt-6 whitespace-nowrap pr-1">
+          <span className="text-sm font-medium text-primary">{start}</span>
+          <span className="text-xs text-(--color-text)/60">to</span>
+          <span className="text-sm font-medium text-primary">{end}</span>
+        </div>
+        {/* Dot and line */}
+        <div className="flex flex-col items-center h-full">
+          <div className="w-3 h-3 rounded-full bg-accent shrink-0 mt-2" />
+          <div className="w-0.5 flex-1 bg-secondary/50" />
+        </div>
       </div>
 
-      {/* Timeline line and dot */}
-      <div className="hidden md:flex flex-col items-center">
-        <div className="w-3 h-3 rounded-full bg-accent shrink-0 mt-2" />
-        <div className="w-0.5 flex-1 bg-secondary/50" />
-      </div>
-
-      {/* Main card */}
-      <div className="relative flex-1 rounded-3xl bg-secondary/20 p-8 shadow-sm transition hover:shadow-lg mb-10">
+      {/* Main card - centered with equal padding on both sides */}
+      <div className="relative md:ml-32 md:mr-32 rounded-3xl bg-secondary/20 p-8 shadow-sm transition hover:shadow-lg">
         {/* Logo - absolute positioned in top right */}
         {logo && (
           <div className="absolute top-6 right-6 w-24 h-24 shrink-0 overflow-hidden rounded-xl bg-white">
