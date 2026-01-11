@@ -23,6 +23,16 @@ export interface ProjectLinks {
   video?: string;
 }
 
+export interface Teammate {
+  name: string;
+  linkedin?: string;
+}
+
+export interface ProjectDetails {
+  content: string; // Markdown-like content for detailed description
+  diagrams?: MediaItem[]; // Additional images for diagrams/examples
+}
+
 export interface Project {
   title: string;
   description: string;
@@ -30,6 +40,10 @@ export interface Project {
   media: MediaItem[];
   links: ProjectLinks;
   highlight?: string;
+  teamSize?: number;
+  teammates?: Teammate[];
+  details?: ProjectDetails;
+  gallery?: MediaItem[]; // Additional photos for the carousel in expanded view
 }
 
 export interface ExperienceLinks {

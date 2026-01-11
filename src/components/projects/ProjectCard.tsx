@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { ExternalLink, Github, PlayCircle } from "lucide-react";
+import { ExternalLink, Github, PlayCircle, Info } from "lucide-react";
 import { type Project } from "@/types";
 
 interface ProjectCardProps {
   project: Project;
+  onLearnMore: () => void;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) {
   const { title, description, technologies, media, links, highlight } = project;
   const primaryMedia = media.find((item) => item.type === "image") ?? media[0];
 
@@ -112,6 +113,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               Video
             </a>
           )}
+          <button
+            onClick={onLearnMore}
+            className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-background transition hover:bg-accent/90"
+          >
+            <Info className="h-4 w-4" />
+            Learn more
+          </button>
         </div>
       </div>
     </article>

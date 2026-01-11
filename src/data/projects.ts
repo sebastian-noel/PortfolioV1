@@ -16,7 +16,26 @@ export const projects: Project[] = [
       // video: ADD VIDEO
     },
     highlight: "SharkByte 2025 Hackathon",
-  }, 
+    teamSize: 4,
+    teammates: [
+      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
+      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
+      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+    ],
+    details: {
+      content: `TideSense is a mobile application designed to enhance beach safety by detecting riptides in real-time using smartphone cameras.
+
+The app leverages machine learning models trained with YOLOv8 and Roboflow to identify dangerous water patterns. When a potential riptide is detected, users receive immediate visual and audio alerts powered by ElevenLabs text-to-speech.
+
+Key Features:
+• Real-time camera analysis for riptide detection
+• AI-powered safety recommendations via Google Gemini
+• Offline capability with local SQLite database
+• Cross-platform support (iOS & Android) via React Native
+
+The backend is built with FastAPI, providing fast and reliable API endpoints for additional processing and data synchronization.`,
+    },
+  },
   {
     title: "Alto",
     description: "Financial management web app to improve budgeting using an AI actionable calendar",
@@ -30,6 +49,23 @@ export const projects: Project[] = [
       devpost: "https://devpost.com/software/alto-m96ytw",
     },
     highlight: "Knight Hacks VIII 2025 Hackathon",
+    teamSize: 4,
+    teammates: [
+      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
+      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
+      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+    ],
+    details: {
+      content: `Alto is a financial management application that transforms budgeting into actionable tasks through an AI-powered calendar interface.
+
+The application analyzes your financial habits and creates personalized action items to help you achieve your savings goals. Using Google's ADK (Agent Development Kit), Alto provides intelligent recommendations and reminders.
+
+Key Features:
+• AI-driven budget analysis and recommendations
+• Interactive calendar with financial action items
+• Clean, modern UI built with Shadcn components
+• Real-time sync across devices`,
+    },
   },
   {
     title: "Next Step",
@@ -45,6 +81,25 @@ export const projects: Project[] = [
       // video: ADD VIDEO
     },
     highlight: "Statefarm Challenge Winner, ShellHacks 2025 Hackathon",
+    teamSize: 4,
+    teammates: [
+      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
+      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
+      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+    ],
+    details: {
+      content: `Next Step is an educational platform that helps users understand complex insurance concepts through interactive AI-powered conversations.
+
+The application simulates real-world insurance scenarios using GPT-4, allowing users to practice navigating claims, understanding policies, and making informed decisions. Voice interaction is enabled through Vapi API for a more natural learning experience.
+
+Key Features:
+• Interactive AI conversations simulating insurance scenarios
+• Voice-enabled interactions for accessibility
+• Progress tracking and learning analytics
+• Scenario library covering various insurance types
+
+This project won the Statefarm Challenge at ShellHacks 2025, demonstrating its potential to improve insurance literacy.`,
+    },
   },
   {
     title: "FE AI",
@@ -58,6 +113,23 @@ export const projects: Project[] = [
       devpost: "https://devpost.com/software/untitled-project-g6fl50ordx7m",
     },
     highlight: "GemiKnights 2025 Hackathon",
+    teamSize: 4,
+    teammates: [
+      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
+      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
+      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+    ],
+    details: {
+      content: `FE AI is a study companion designed to help UCF Computer Science students prepare for the Foundations Exam.
+
+The application allows students to practice exam-style questions and receive instant AI-powered feedback on their responses. Using Google Gemini, FE AI provides detailed explanations and suggestions for improvement.
+
+Key Features:
+• Handwriting recognition via TLDraw for natural problem-solving
+• AI grading with detailed feedback
+• Practice questions covering all FE exam topics
+• Progress tracking to identify weak areas`,
+    },
   },
   {
     title: "DishDash",
@@ -71,5 +143,22 @@ export const projects: Project[] = [
       devpost: "https://devpost.com/software/dishdash-iy7rah",
     },
     highlight: "Knight Hacks VII 2024 Hackathon",
+    teamSize: 4,
+    teammates: [
+      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
+      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
+      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+    ],
+    details: {
+      content: `DishDash helps reduce food waste by suggesting recipes based on ingredients you already have at home.
+
+Simply input the ingredients available in your kitchen, and DishDash will recommend recipes that maximize what you have. The application uses MongoDB to store a comprehensive recipe database and user preferences.
+
+Key Features:
+• Ingredient-based recipe search
+• Smart recipe matching algorithm
+• Save favorite recipes for later
+• Dietary preference filters`,
+    },
   },
 ];
