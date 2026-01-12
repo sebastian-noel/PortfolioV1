@@ -65,7 +65,7 @@ export default function ProjectModal({
   if (!isOpen) return null;
 
   const currentMedia = allMedia[currentImageIndex];
-  const { title, description, technologies, links, highlight, teamSize, teammates, details } = project;
+  const { title, description, technologies, links, purpose, teamSize, teammates, details } = project;
 
   return (
     <div
@@ -166,9 +166,9 @@ export default function ProjectModal({
           <div className="space-y-6 p-6 sm:p-8">
             {/* Header */}
             <div className="space-y-2">
-              {highlight && (
+              {purpose && (
                 <span className="text-sm font-semibold uppercase tracking-wide text-accent">
-                  {highlight}
+                  {purpose}
                 </span>
               )}
               <h2 id="modal-title" className="text-3xl font-bold text-foreground sm:text-4xl">

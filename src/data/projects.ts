@@ -2,7 +2,7 @@ import { type Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    title: "TideSense",
+    title: "Tide Sense",
     description: "Mobile beach safety app to provide real-time riptide detection using a smartphone camera",
     technologies: ["React Native (Expo)", "TensorFlow Lite", "YOLOv8", "Roboflow", "SQLite", "FastAPI", "TypeScript", "Python", "Google Gemini", "ElevenLabs"],
     media: [
@@ -15,7 +15,12 @@ export const projects: Project[] = [
       demo: "https://youtube.com/shorts/cJQApi3ehAw"
       // video: ADD VIDEO
     },
-    highlight: "SharkByte 2025 Hackathon",
+    purpose: "SharkByte 2025 Hackathon",
+    colorScheme: {
+      primary: "#7A9CD5",
+      secondary: "#343E8B",
+      techBg: "#7A9CD526", // Primary w/ 15% opacity
+    },
     teamSize: 4,
     teammates: [
       { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
@@ -48,7 +53,12 @@ The backend is built with FastAPI, providing fast and reliable API endpoints for
       github: "https://github.com/evans-christian2004/alto-starter",
       devpost: "https://devpost.com/software/alto-m96ytw",
     },
-    highlight: "Knight Hacks VIII 2025 Hackathon",
+    purpose: "Knight Hacks VIII 2025 Hackathon",
+    colorScheme: {
+      primary: "#71CCFF",
+      secondary: "#0049AF",
+      techBg: "#71CCFF26", // Primary w/ 15% opacity
+    },
     teamSize: 4,
     teammates: [
       { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
@@ -72,6 +82,7 @@ Key Features:
     description: "Insurance learning web app using AI conversations to simulate complex insurance-related scenarios",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Python", "Flask", "OpenAI GPT-4", "Vapi API"],
     media: [
+      { type: "image", src: "/images/projects/nextstep-logo.png", alt: "Next Step Logo" },
       { type: "image", src: "/images/projects/nextstep-dashboard.png", alt: "Next Step Dashboard" },
       { type: "image", src: "/images/projects/nextstep-win.jpg", alt: "Next Step Winning Photo" },
     ],
@@ -80,7 +91,13 @@ Key Features:
       devpost: "https://devpost.com/software/next-step-cme06a",
       // video: ADD VIDEO
     },
-    highlight: "Statefarm Challenge Winner, ShellHacks 2025 Hackathon",
+    purpose: "ShellHacks 2025 Hackathon",
+    award: "Winner - Statefarm Challenge",
+    colorScheme: {
+      primary: "#11CF77",
+      secondary: "#0C1729",
+      techBg: "#11CF7726", // Primary w/ 15% opacity
+    },
     teamSize: 4,
     teammates: [
       { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
@@ -112,7 +129,12 @@ This project won the Statefarm Challenge at ShellHacks 2025, demonstrating its p
       github: "https://github.com/sebastian-noel/FE-AI",
       devpost: "https://devpost.com/software/untitled-project-g6fl50ordx7m",
     },
-    highlight: "GemiKnights 2025 Hackathon",
+    purpose: "GemiKnights 2025 Hackathon",
+    colorScheme: {
+      primary: "#DEB254",
+      secondary: "#191E1F",
+      techBg: "#DEB25426", // Primary w/ 15% opacity
+    },
     teamSize: 3,
     teammates: [
       { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
@@ -131,7 +153,7 @@ Key Features:
     },
   },
   {
-    title: "DishDash",
+    title: "Dish Dash",
     description: "Recipe reccommendation web app that suggests recipes based on your available ingredients",
     technologies: ["React", "JavaScript", "CSS", "MongoDB", "TLDraw API"],
     media: [
@@ -141,7 +163,12 @@ Key Features:
       github: "https://github.com/sebastian-noel/DishDash",
       devpost: "https://devpost.com/software/dishdash-iy7rah",
     },
-    highlight: "Knight Hacks VII 2024 Hackathon",
+    purpose: "Knight Hacks VII 2024 Hackathon",
+    colorScheme: {
+      primary: "#CF3524",
+      secondary: "#4E8BC8",
+      techBg: "#CF352426", // Primary w/ 15% opacity
+    },
     teamSize: 2,
     teammates: [
       { name: "Ibrahim Shaqqou", linkedin: "https://www.linkedin.com/in/ibrahim-shaqqou-5866b0329/" },

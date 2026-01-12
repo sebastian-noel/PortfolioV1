@@ -33,13 +33,21 @@ export interface ProjectDetails {
   diagrams?: MediaItem[]; // Additional images for diagrams/examples
 }
 
+export interface ProjectColorScheme {
+  primary: string;      // Award bg, tech text, purpose, icons/links, button borders
+  secondary: string;    // Card background
+  techBg: string;       // Technology pill background
+}
+
 export interface Project {
   title: string;
   description: string;
   technologies: string[];
   media: MediaItem[];
   links: ProjectLinks;
-  highlight?: string;
+  purpose?: string;
+  award?: string;
+  colorScheme?: ProjectColorScheme;
   teamSize?: number;
   teammates?: Teammate[];
   details?: ProjectDetails;

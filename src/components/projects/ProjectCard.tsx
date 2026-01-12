@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ExternalLink, Github, PlayCircle, Info } from "lucide-react";
+import { ExternalLink, Github, PlayCircle } from "lucide-react";
 import { type Project } from "@/types";
 
 interface ProjectCardProps {
@@ -8,26 +8,47 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) {
-  const { title, description, technologies, media, links, highlight } = project;
+  const { title, description, technologies, media, links, purpose, award, colorScheme } = project;
   const primaryMedia = media.find((item) => item.type === "image") ?? media[0];
 
+  // Default colors if no color scheme is provided
+  const primary = colorScheme?.primary ?? "var(--color-accent)";
+  const secondary = colorScheme?.secondary ?? "var(--color-secondary)";
+  const techBg = colorScheme?.techBg ?? `${primary}26`; // 15% opacity fallback
+
   return (
-    <article className="flex h-full flex-col gap-4 rounded-3xl border border-secondary/30 bg-secondary/15 p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+    <article 
+      onClick={onLearnMore}
+      className="group relative flex h-full flex-col gap-4 rounded-3xl border p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+      style={{
+        backgroundColor: `${secondary}26`,
+        borderColor: `${secondary}4D`,
+      }}>
+      {award && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+          <span 
+            className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wide shadow-lg transition-transform duration-200 group-hover:scale-110 group-hover:rotate-3"
+            style={{ backgroundColor: primary, color: '#0a0a0a' }}
+          >
+            🏆 {award}
+          </span>
+        </div>
+      )}
       {primaryMedia && (
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/60">
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-background/60 group">
           {primaryMedia.type === "image" ? (
             <Image
               src={primaryMedia.src}
               alt={primaryMedia.alt}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 600px"
               priority={false}
             />
           ) : (
             <video
               src={primaryMedia.src}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
               controls
               muted
               playsInline
@@ -38,19 +59,30 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
       )}
 
       <div className="flex flex-1 flex-col gap-3">
-        {highlight && (
-          <span className="text-xs font-semibold uppercase tracking-wide text-accent">
-            {highlight}
+        {purpose && (
+          <span 
+            className="text-xs font-semibold uppercase tracking-wide"
+            style={{ color: primary }}
+          >
+            {purpose}
           </span>
         )}
-        <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-        <p className="text-base leading-relaxed text-(--color-text)/80">{description}</p>
+        <h3 
+          className="text-2xl font-bold bg-clip-text text-transparent"
+          style={{ 
+            backgroundImage: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)`,
+          }}
+        >
+          {title}
+        </h3>
+        <p className="text-base leading-relaxed text-foreground/80">{description}</p>
 
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full bg-accent/15 px-3 py-1 text-xs font-medium text-accent"
+              className="rounded-full px-3 py-1 text-xs font-medium"
+              style={{ backgroundColor: techBg, color: primary }}
             >
               {tech}
             </span>
@@ -63,7 +95,9 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
               href={links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-accent/60 px-3 py-1.5 text-sm font-medium text-accent transition hover:bg-accent/10"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-sm font-medium transition hover:opacity-80"
+              style={{ borderColor: `${primary}99`, color: primary }}
             >
               <Github className="h-4 w-4" />
               GitHub
@@ -74,7 +108,9 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
               href={links.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-accent/60 px-3 py-1.5 text-sm font-medium text-accent transition hover:bg-accent/10"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-sm font-medium transition hover:opacity-80"
+              style={{ borderColor: `${primary}99`, color: primary }}
             >
               <PlayCircle className="h-4 w-4" />
               Demo
@@ -85,7 +121,9 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
               href={links.devpost}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-accent/60 px-3 py-1.5 text-sm font-medium text-accent transition hover:bg-accent/10"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-sm font-medium transition hover:opacity-80"
+              style={{ borderColor: `${primary}99`, color: primary }}
             >
               <ExternalLink className="h-4 w-4" />
               Devpost
@@ -96,7 +134,9 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
               href={links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-accent/60 px-3 py-1.5 text-sm font-medium text-accent transition hover:bg-accent/10"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-sm font-medium transition hover:opacity-80"
+              style={{ borderColor: `${primary}99`, color: primary }}
             >
               <ExternalLink className="h-4 w-4" />
               Live
@@ -107,19 +147,14 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
               href={links.video}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-accent/60 px-3 py-1.5 text-sm font-medium text-accent transition hover:bg-accent/10"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-sm font-medium transition hover:opacity-80"
+              style={{ borderColor: `${primary}99`, color: primary }}
             >
               <PlayCircle className="h-4 w-4" />
               Video
             </a>
           )}
-          <button
-            onClick={onLearnMore}
-            className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-background transition hover:bg-accent/90"
-          >
-            <Info className="h-4 w-4" />
-            Learn more
-          </button>
         </div>
       </div>
     </article>
