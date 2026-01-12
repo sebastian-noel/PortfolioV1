@@ -18,9 +18,9 @@ export const projects: Project[] = [
     highlight: "SharkByte 2025 Hackathon",
     teamSize: 4,
     teammates: [
-      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
-      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
-      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+      { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
+      { name: "Nicole Bustos", linkedin: "https://www.linkedin.com/in/nicolebustos/" },
+      { name: "Chris Ho", linkedin: "https://www.linkedin.com/in/chris-ho-15a039329/" },
     ],
     details: {
       content: `TideSense is a mobile application designed to enhance beach safety by detecting riptides in real-time using smartphone cameras.
@@ -51,9 +51,9 @@ The backend is built with FastAPI, providing fast and reliable API endpoints for
     highlight: "Knight Hacks VIII 2025 Hackathon",
     teamSize: 4,
     teammates: [
-      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
-      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
-      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+      { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
+      { name: "Christian Evans", linkedin: "https://www.linkedin.com/in/evanschristian/" },
+      { name: "Ibrahim Shaqqou", linkedin: "https://www.linkedin.com/in/ibrahim-shaqqou-5866b0329/" },
     ],
     details: {
       content: `Alto is a financial management application that transforms budgeting into actionable tasks through an AI-powered calendar interface.
@@ -83,9 +83,9 @@ Key Features:
     highlight: "Statefarm Challenge Winner, ShellHacks 2025 Hackathon",
     teamSize: 4,
     teammates: [
-      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
-      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
-      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+      { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
+      { name: "Alejandro Jaimes", linkedin: "https://www.linkedin.com/in/alejandro-jaimes-coco/" },
+      { name: "Carlos Rincon", linkedin: "https://www.linkedin.com/in/carlos-rincon-004241387/" },
     ],
     details: {
       content: `Next Step is an educational platform that helps users understand complex insurance concepts through interactive AI-powered conversations.
@@ -113,11 +113,10 @@ This project won the Statefarm Challenge at ShellHacks 2025, demonstrating its p
       devpost: "https://devpost.com/software/untitled-project-g6fl50ordx7m",
     },
     highlight: "GemiKnights 2025 Hackathon",
-    teamSize: 4,
+    teamSize: 3,
     teammates: [
-      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
-      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
-      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+      { name: "Stevin George", linkedin: "https://www.linkedin.com/in/georgestevin/" },
+      { name: "Christian Evans", linkedin: "https://www.linkedin.com/in/evanschristian/" },
     ],
     details: {
       content: `FE AI is a study companion designed to help UCF Computer Science students prepare for the Foundations Exam.
@@ -143,11 +142,9 @@ Key Features:
       devpost: "https://devpost.com/software/dishdash-iy7rah",
     },
     highlight: "Knight Hacks VII 2024 Hackathon",
-    teamSize: 4,
+    teamSize: 2,
     teammates: [
-      { name: "Teammate 1", linkedin: "https://linkedin.com/in/teammate1" },
-      { name: "Teammate 2", linkedin: "https://linkedin.com/in/teammate2" },
-      { name: "Teammate 3", linkedin: "https://linkedin.com/in/teammate3" },
+      { name: "Ibrahim Shaqqou", linkedin: "https://www.linkedin.com/in/ibrahim-shaqqou-5866b0329/" },
     ],
     details: {
       content: `DishDash helps reduce food waste by suggesting recipes based on ingredients you already have at home.
