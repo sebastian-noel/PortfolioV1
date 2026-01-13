@@ -19,7 +19,7 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
   return (
     <article 
       onClick={onLearnMore}
-      className="group relative flex h-full flex-col gap-4 rounded-3xl border p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+      className="group relative flex h-full flex-col gap-4 rounded-3xl border p-6 shadow-sm transition duration-200 hover:scale-105 hover:shadow-lg cursor-pointer"
       style={{
         backgroundColor: `${secondary}26`,
         borderColor: `${secondary}4D`,
@@ -35,20 +35,20 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
         </div>
       )}
       {primaryMedia && (
-        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-background/60 group">
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl bg-background/60 group/media">
           {primaryMedia.type === "image" ? (
             <Image
               src={primaryMedia.src}
               alt={primaryMedia.alt}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover/media:scale-110"
               sizes="(max-width: 768px) 100vw, 600px"
               priority={false}
             />
           ) : (
             <video
               src={primaryMedia.src}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              className="h-full w-full object-cover transition-transform duration-300 group-hover/media:scale-110"
               controls
               muted
               playsInline
