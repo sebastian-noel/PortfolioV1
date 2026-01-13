@@ -21,6 +21,11 @@ export const experiences: Experience[] = [
       { type: "image", src: "/images/experience/bny-office.jpg", alt: "BNY CTOC Lab" },
       { type: "image", src: "/images/experience/bny-ucf.jpg", alt: "BNY x UCF Collaboration" },
     ],
+    colorScheme: {
+      primary: "#2D9BAD",
+      secondary: "#00243E",
+      techBg: "#2D9BAD26", // Primary w/ 15% opacity
+    },
   },
   {
     company: "Center for Research in Computer Vision",
@@ -41,6 +46,11 @@ export const experiences: Experience[] = [
     media: [
       { type: "image", src: "/images/experience/crcv-building.jpg", alt: "CRCV Research Lab in L3Harris Engineering Center" },
     ],
+    colorScheme: {
+      primary: "#FFCC00",
+      secondary: "#404040",
+      techBg: "#FFCC0026", // Primary w/ 15% opacity
+    },
   },
   {
     company: "Data-Enabled Photovoltaics",
@@ -58,13 +68,18 @@ export const experiences: Experience[] = [
       "Architected a foundational Python package by refactoring 14 scripts to accelerate future research and development",
     ],
     technologies: ["Python", "PyTorch", "LSTM", "MLP", "Marimo", "NumPy", "Pandas"],
-    logo: "/images/experience/dpv-logo.jpg",
+    logo: "/images/experience/dpv-logo.png",
     links: [
       { label: "Research Program", url: "https://ucf-dpv.notion.site/DARTS-2025-2498d52e715180b18c7fd1065e655faf?p=2498d52e7151801d89c8f4d5ea1a9ac7&pm=c" },
     ],
     media: [
       { type: "image", src: "/images/experience/dpv-team.jpg", alt: "DPV DARTS Showcase" },
     ],
+    colorScheme: {
+      primary: "#F9C710",
+      secondary: "#1A1A1A",
+      techBg: "#F9C71026", // Primary w/ 15% opacity
+    },
   },
   {
     company: "Graphics Programming Knights",
@@ -89,6 +104,11 @@ export const experiences: Experience[] = [
       { type: "image", src: "/images/experience/gpk-renderjam.png", alt: "GPK Render Jam Event" },
       { type: "image", src: "/images/experience/gpk-workshop.png", alt: "GPK x KH Workshop" },
     ],
+    colorScheme: {
+      primary: "#9D1FAA",
+      secondary: "#180d3b",
+      techBg: "#9D1FAA26", // Primary w/ 15% opacity
+    },
   },
   {
     company: "Knight Hacks",
@@ -115,6 +135,11 @@ export const experiences: Experience[] = [
     media: [
       { type: "image", src: "/images/experience/kh-kickstart.jpg", alt: "Knight Hacks Kickstart Mentorship" }
     ],
+    colorScheme: {
+      primary: "#9665CC",
+      secondary: "#151934",
+      techBg: "#9665CC26", // Primary w/ 15% opacity
+    },
   },
 ];
 

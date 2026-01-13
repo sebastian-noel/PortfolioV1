@@ -71,6 +71,7 @@ export interface Experience {
   logo: string;
   links?: ExperienceLinks[];
   media?: MediaItem[];
+  colorScheme?: ProjectColorScheme;
 }
 
 

@@ -27,6 +27,11 @@ export default function ProjectModal({
 }: ProjectModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Extract color scheme
+  const primary = project.colorScheme?.primary ?? "var(--color-accent)";
+  const secondary = project.colorScheme?.secondary ?? "var(--color-secondary)";
+  const techBg = project.colorScheme?.techBg ?? `${primary}26`;
+
   // Combine media and gallery for the carousel
   const allMedia: MediaItem[] = [
     ...project.media,
@@ -76,13 +81,19 @@ export default function ProjectModal({
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Modal Content */}
-      <div className="relative z-10 flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-secondary/30 bg-background shadow-2xl">
+      <div 
+        className="relative z-10 flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border shadow-2xl"
+        style={{
+          backgroundColor: 'var(--color-background)',
+          borderColor: primary,
+        }}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -141,11 +152,10 @@ export default function ProjectModal({
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`h-2 w-2 rounded-full transition ${
-                          idx === currentImageIndex
-                            ? "bg-accent"
-                            : "bg-foreground/40 hover:bg-foreground/60"
-                        }`}
+                        className="h-2 w-2 rounded-full transition"
+                        style={{
+                          backgroundColor: idx === currentImageIndex ? primary : 'rgba(255, 255, 255, 0.4)',
+                        }}
                         aria-label={`Go to image ${idx + 1}`}
                       />
                     ))}
@@ -167,11 +177,20 @@ export default function ProjectModal({
             {/* Header */}
             <div className="space-y-2">
               {purpose && (
-                <span className="text-sm font-semibold uppercase tracking-wide text-accent">
+                <span 
+                  className="text-sm font-semibold uppercase tracking-wide"
+                  style={{ color: primary }}
+                >
                   {purpose}
                 </span>
               )}
-              <h2 id="modal-title" className="text-3xl font-bold text-foreground sm:text-4xl">
+              <h2 
+                id="modal-title" 
+                className="text-3xl font-bold sm:text-4xl bg-clip-text text-transparent"
+                style={{ 
+                  backgroundImage: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)`,
+                }}
+              >
                 {title}
               </h2>
             </div>
@@ -181,7 +200,8 @@ export default function ProjectModal({
               {technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full bg-accent/15 px-3 py-1 text-sm font-medium text-accent"
+                  className="rounded-full px-3 py-1 text-sm font-medium"
+                  style={{ backgroundColor: techBg, color: primary }}
                 >
                   {tech}
                 </span>
@@ -235,10 +255,13 @@ export default function ProjectModal({
             {(teamSize || (teammates && teammates.length > 0)) && (
               <div className="space-y-3 rounded-2xl border border-secondary/30 bg-secondary/10 p-4">
                 <div className="flex items-center gap-2 text-foreground">
-                  <Users className="h-5 w-5 text-accent" />
+                  <Users className="h-5 w-5" style={{ color: primary }} />
                   <h3 className="text-lg font-semibold">Team</h3>
                   {teamSize && (
-                    <span className="rounded-full bg-accent/20 px-2 py-0.5 text-sm text-accent">
+                    <span 
+                      className="rounded-full px-2 py-0.5 text-sm"
+                      style={{ backgroundColor: techBg, color: primary }}
+                    >
                       {teamSize} {teamSize === 1 ? "member" : "members"}
                     </span>
                   )}
@@ -259,7 +282,8 @@ export default function ProjectModal({
                             href={teammate.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-accent transition hover:text-accent/80"
+                            className="transition hover:opacity-80"
+                            style={{ color: primary }}
                             aria-label={`${teammate.name}'s LinkedIn`}
                           >
                             <Linkedin className="h-4 w-4" />
@@ -279,7 +303,8 @@ export default function ProjectModal({
                   href={links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-background transition hover:bg-accent/90"
+                  className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition hover:opacity-90"
+                  style={{ backgroundColor: primary, color: '#0a0a0a' }}
                 >
                   <Github className="h-4 w-4" />
                   View on GitHub
@@ -290,7 +315,8 @@ export default function ProjectModal({
                   href={links.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/60 px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent/10"
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition hover:opacity-80"
+                  style={{ borderColor: `${primary}99`, color: primary }}
                 >
                   <PlayCircle className="h-4 w-4" />
                   Watch Demo
@@ -301,7 +327,8 @@ export default function ProjectModal({
                   href={links.devpost}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/60 px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent/10"
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition hover:opacity-80"
+                  style={{ borderColor: `${primary}99`, color: primary }}
                 >
                   <ExternalLink className="h-4 w-4" />
                   Devpost
@@ -312,7 +339,8 @@ export default function ProjectModal({
                   href={links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/60 px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent/10"
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition hover:opacity-80"
+                  style={{ borderColor: `${primary}99`, color: primary }}
                 >
                   <ExternalLink className="h-4 w-4" />
                   Live Site
@@ -323,7 +351,8 @@ export default function ProjectModal({
                   href={links.video}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-accent/60 px-4 py-2 text-sm font-medium text-accent transition hover:bg-accent/10"
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition hover:opacity-80"
+                  style={{ borderColor: `${primary}99`, color: primary }}
                 >
                   <PlayCircle className="h-4 w-4" />
                   Video

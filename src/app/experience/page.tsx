@@ -17,6 +17,9 @@ export default function ExperiencePage() {
 
         {/* Timeline */}
         <div className="relative">
+          {/* Continuous timeline line - spans entire section */}
+          <div className="hidden md:block absolute left-27.5 top-2 bottom-0 w-0.5 bg-secondary/50" />
+          
           {experiences.map((experience, idx) => (
             <ExperienceCard key={`${experience.company}-${idx}`} experience={experience} />
           ))}

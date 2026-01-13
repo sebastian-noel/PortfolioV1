@@ -19,11 +19,14 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
   return (
     <article 
       onClick={onLearnMore}
-      className="group relative flex h-full flex-col gap-4 rounded-3xl border p-6 shadow-sm transition duration-200 hover:scale-105 hover:shadow-lg cursor-pointer"
+      className="group relative flex h-full flex-col gap-4 rounded-3xl border p-6 shadow-sm cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-lg"
       style={{
         backgroundColor: `${secondary}26`,
-        borderColor: `${secondary}4D`,
-      }}>
+        borderColor: techBg,
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.borderColor = primary}
+      onMouseLeave={(e) => e.currentTarget.style.borderColor = techBg}
+      >
       {award && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
           <span 

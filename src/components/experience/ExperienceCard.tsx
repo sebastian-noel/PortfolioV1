@@ -26,7 +26,13 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
     logo,
     links,
     media,
+    colorScheme,
   } = experience;
+
+  // Custom color scheme with fallbacks
+  const primary = colorScheme?.primary ?? 'var(--color-accent)';
+  const secondary = colorScheme?.secondary ?? 'var(--color-secondary)';
+  const techBg = colorScheme?.techBg ?? `${primary}26`;
 
   const images = media?.filter((m) => m.type === 'image') ?? [];
   const hasMultipleImages = images.length > 1;
@@ -40,48 +46,60 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
   };
 
   return (
-    <div className="relative mb-10">
+    <div className="relative pb-10 last:pb-0">
       {/* Timeline - positioned absolutely on the left */}
-      <div className="hidden md:flex absolute -left-4 top-0 bottom-0 items-start gap-2">
+      <div className="hidden md:flex absolute -left-4 top-0 items-start gap-2">
         {/* Date */}
         <div className="flex flex-col items-end w-28 pt-6 whitespace-nowrap pr-1">
-          <span className="text-sm font-medium text-primary">{start}</span>
+          <span className="text-sm font-medium" style={{ color: primary }}>{start}</span>
           <span className="text-xs text-(--color-text)/60">to</span>
-          <span className="text-sm font-medium text-primary">{end}</span>
+          <span className="text-sm font-medium" style={{ color: primary }}>{end}</span>
         </div>
-        {/* Dot and line */}
-        <div className="flex flex-col items-center h-full">
-          <div className="w-3 h-3 rounded-full bg-accent shrink-0 mt-2" />
-          <div className="w-0.5 flex-1 bg-secondary/50" />
+        {/* Dot only - the line is continuous in the parent */}
+        <div className="flex flex-col items-center ml-px">
+          <div className="w-3 h-3 rounded-full shrink-0 mt-2" style={{ backgroundColor: primary }} />
         </div>
       </div>
 
       {/* Main card - centered with equal padding on both sides */}
-      <div className="relative md:ml-32 md:mr-32 rounded-3xl bg-secondary/20 p-8 shadow-sm transition hover:shadow-lg">
+      <div 
+        className="relative md:ml-32 md:mr-32 rounded-3xl p-8 shadow-sm transition-all duration-300 hover:shadow-lg border"
+        style={{
+          backgroundColor: `${secondary}26`,
+          borderColor: techBg,
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.borderColor = primary}
+        onMouseLeave={(e) => e.currentTarget.style.borderColor = techBg}
+      >
         {/* Logo - absolute positioned in top right */}
         {logo && (
-          <div className="absolute top-6 right-6 w-24 h-24 shrink-0 overflow-hidden rounded-xl bg-white">
+          <div className="absolute top-6 right-6 w-24 h-24 shrink-0 overflow-hidden rounded-xl">
             <Image
               src={logo}
               alt={`${company} logo`}
               fill
-              className="object-contain p-2"
+              className="object-contain"
             />
           </div>
         )}
 
         {/* Mobile date display */}
-        <div className="md:hidden flex items-center gap-2 text-sm text-primary mb-6">
+        <div className="md:hidden flex items-center gap-2 text-sm mb-6" style={{ color: primary }}>
           <span>{start}</span>
           <span className="text-(--color-text)/60">-</span>
           <span>{end}</span>
         </div>
 
         {/* Role */}
-        <h3 className="text-2xl font-bold text-foreground mb-2 pr-28">{role}</h3>
+        <h3 
+          className="text-2xl font-bold mb-2 pr-28 bg-clip-text text-transparent"
+          style={{ backgroundImage: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)` }}
+        >
+          {role}
+        </h3>
 
         {/* Company name */}
-        <p className="text-xl text-primary mb-2">{company}</p>
+        <p className="text-xl mb-2" style={{ color: primary }}>{company}</p>
 
         {/* Location */}
         <div className="flex items-center gap-1.5 text-sm text-(--color-text)/70 mb-6">
@@ -111,7 +129,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                   className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 shadow-md transition hover:bg-background"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="h-5 w-5 text-accent" />
+                  <ChevronLeft className="h-5 w-5" style={{ color: primary }} />
                 </button>
                 <button
                   type="button"
@@ -119,7 +137,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                   className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 shadow-md transition hover:bg-background"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="h-5 w-5 text-accent" />
+                  <ChevronRight className="h-5 w-5" style={{ color: primary }} />
                 </button>
 
                 {/* Indicators */}
@@ -129,11 +147,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                       key={idx}
                       type="button"
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-2.5 h-2.5 rounded-full transition ${
-                        idx === currentImageIndex
-                          ? 'bg-accent'
-                          : 'bg-(--color-text)/40'
-                      }`}
+                      className="w-2.5 h-2.5 rounded-full transition"
+                      style={{ backgroundColor: idx === currentImageIndex ? primary : 'rgba(255, 255, 255, 0.4)' }}
                       aria-label={`Go to image ${idx + 1}`}
                     />
                   ))}
@@ -152,7 +167,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             {technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full bg-accent/20 px-3 py-1 text-xs font-medium text-accent"
+                className="rounded-full px-3 py-1 text-xs font-medium"
+                style={{ backgroundColor: techBg, color: primary }}
               >
                 {tech}
               </span>
@@ -164,7 +180,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         <button
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+          className="inline-flex items-center gap-1 text-sm font-medium hover:underline"
+          style={{ color: primary }}
         >
           {isExpanded ? 'Hide Details' : 'Show More Details'}
           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -193,7 +210,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                           key={idx}
                           className="flex items-start gap-2 text-sm text-(--color-text)/80"
                         >
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: primary }} />
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -214,7 +231,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium hover:underline"
+                          style={{ color: primary }}
                         >
                           <ExternalLink className="h-3.5 w-3.5" />
                           {link.label}
