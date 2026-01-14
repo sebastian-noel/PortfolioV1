@@ -92,8 +92,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 
         {/* Role */}
         <h3 
-          className="text-2xl font-bold mb-2 pr-28 bg-clip-text text-transparent"
-          style={{ backgroundImage: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)` }}
+          className="text-2xl font-bold mb-2 pr-28"
+          style={{ color: primary }}
         >
           {role}
         </h3>

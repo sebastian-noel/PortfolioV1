@@ -71,9 +71,9 @@ export default function ProjectCard({ project, onLearnMore }: ProjectCardProps) 
           </span>
         )}
         <h3 
-          className="text-2xl font-bold bg-clip-text text-transparent"
+          className="text-2xl font-bold"
           style={{ 
-            backgroundImage: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)`,
+            color: primary,
           }}
         >
           {title}

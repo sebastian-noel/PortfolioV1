@@ -100,7 +100,7 @@ export default function ImageCarousel() {
       <AnimatePresence>
         {activeSlide ? (
           <motion.div
-            className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 px-4"
+            className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 backdrop-blur-[2px] px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -114,7 +114,7 @@ export default function ImageCarousel() {
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full aspect-4/3 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-secondary/60">
+              <div className="relative w-full aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
                 <Image
                   src={activeSlide.src}
                   alt={activeSlide.alt}

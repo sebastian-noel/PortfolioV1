@@ -29,7 +29,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Center for Research in Computer Vision",
-    role: "Computer Vision Engineer Intern",
+    role: "Undergraduate Computer Vision Researcher",
     start: "January 2026",
     end: "Present",
     location: "Orlando, FL",
@@ -50,35 +50,6 @@ export const experiences: Experience[] = [
       primary: "#FFCC00",
       secondary: "#404040",
       techBg: "#FFCC0026", // Primary w/ 15% opacity
-    },
-  },
-  {
-    company: "Data-Enabled Photovoltaics",
-    role: "Software Engineering Intern",
-    start: "June 2024",
-    end: "August 2024",
-    location: "Remote",
-    description:
-      "Conducted research on multimodal deep learning for photovoltaic module analysis, implementing machine learning models for voltage prediction and defect detection.",
-    achievements: [
-      "Co-authored (as 2nd author) a research paper on the Multimodal Deep Learning for Photovoltaic Modules (in progress)",
-      "Improved voltage prediction accuracy from 51% to 77% by implementing wavelet-enhanced LSTM models",
-      "Achieved an R² of 53% and MAE of 0.89 for crack defect prediction using Multi-Layer Perceptrons (MLPs)",
-      "Engineered an image processing pipeline using Marimo notebooks, reducing data processing time by 25%",
-      "Architected a foundational Python package by refactoring 14 scripts to accelerate future research and development",
-    ],
-    technologies: ["Python", "PyTorch", "LSTM", "MLP", "Marimo", "NumPy", "Pandas"],
-    logo: "/images/experience/dpv-logo.png",
-    links: [
-      { label: "Research Program", url: "https://ucf-dpv.notion.site/DARTS-2025-2498d52e715180b18c7fd1065e655faf?p=2498d52e7151801d89c8f4d5ea1a9ac7&pm=c" },
-    ],
-    media: [
-      { type: "image", src: "/images/experience/dpv-team.jpg", alt: "DPV DARTS Showcase" },
-    ],
-    colorScheme: {
-      primary: "#F9C710",
-      secondary: "#1A1A1A",
-      techBg: "#F9C71026", // Primary w/ 15% opacity
     },
   },
   {
@@ -108,6 +79,35 @@ export const experiences: Experience[] = [
       primary: "#9D1FAA",
       secondary: "#180d3b",
       techBg: "#9D1FAA26", // Primary w/ 15% opacity
+    },
+  },
+  {
+    company: "Data-Enabled Photovoltaics",
+    role: "Software Engineering Intern",
+    start: "June 2024",
+    end: "August 2024",
+    location: "Remote",
+    description:
+      "Conducted research on multimodal deep learning for photovoltaic module analysis, implementing machine learning models for voltage prediction and defect detection.",
+    achievements: [
+      "Co-authored (as 2nd author) a research paper on the Multimodal Deep Learning for Photovoltaic Modules (in progress)",
+      "Improved voltage prediction accuracy from 51% to 77% by implementing wavelet-enhanced LSTM models",
+      "Achieved an R² of 53% and MAE of 0.89 for crack defect prediction using Multi-Layer Perceptrons (MLPs)",
+      "Engineered an image processing pipeline using Marimo notebooks, reducing data processing time by 25%",
+      "Architected a foundational Python package by refactoring 14 scripts to accelerate future research and development",
+    ],
+    technologies: ["Python", "PyTorch", "LSTM", "MLP", "Marimo", "NumPy", "Pandas"],
+    logo: "/images/experience/dpv-logo.png",
+    links: [
+      { label: "Research Program", url: "https://ucf-dpv.notion.site/DARTS-2025-2498d52e715180b18c7fd1065e655faf?p=2498d52e7151801d89c8f4d5ea1a9ac7&pm=c" },
+    ],
+    media: [
+      { type: "image", src: "/images/experience/dpv-team.jpg", alt: "DPV DARTS Showcase" },
+    ],
+    colorScheme: {
+      primary: "#F9C710",
+      secondary: "#1A1A1A",
+      techBg: "#F9C71026", // Primary w/ 15% opacity
     },
   },
   {

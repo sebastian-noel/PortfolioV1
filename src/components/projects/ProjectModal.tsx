@@ -186,9 +186,9 @@ export default function ProjectModal({
               )}
               <h2 
                 id="modal-title" 
-                className="text-3xl font-bold sm:text-4xl bg-clip-text text-transparent"
+                className="text-3xl font-bold sm:text-4xl"
                 style={{ 
-                  backgroundImage: `linear-gradient(90deg, ${primary} 0%, ${secondary} 100%)`,
+                  color: primary,
                 }}
               >
                 {title}

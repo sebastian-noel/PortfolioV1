@@ -54,10 +54,42 @@ export const heroContent: HeroContent = {
   hobbies: [
     {
       title: "Computer Hardware & Peripherals",
-      description: "Placeholder description about computer hardware and peripherals",
+      description: "I enjoy building and optimizing custom PC setups, from selecting the right components to fine-tuning peripherals for the best experience.",
       media: [
-        { type: "image", src: "/images/hobbies/placeholder.png", alt: "Placeholder image" },
+        { type: "image", src: "/images/hobbies/placeholder.png", alt: "Computer setup" },
       ],
+      details: {
+        sections: [
+          {
+            title: "Computer Specs",
+            items: [
+              { name: "CPU", description: "Placeholder CPU" },
+              { name: "GPU", description: "Placeholder GPU" },
+              { name: "RAM", description: "Placeholder RAM" },
+              { name: "Storage", description: "Placeholder Storage" },
+              { name: "Case", description: "Placeholder Case" },
+            ],
+          },
+          {
+            title: "Monitor",
+            items: [
+              { name: "Primary Monitor", description: "Placeholder Monitor" },
+            ],
+          },
+          {
+            title: "Keyboard",
+            items: [
+              { name: "Keyboard", description: "Placeholder Keyboard" },
+            ],
+          },
+          {
+            title: "Mouse",
+            items: [
+              { name: "Mouse", description: "Placeholder Mouse" },
+            ],
+          },
+        ],
+      },
     },
     {
       title: "Gaming",

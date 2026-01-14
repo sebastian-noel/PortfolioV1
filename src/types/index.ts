@@ -74,12 +74,24 @@ export interface Experience {
   colorScheme?: ProjectColorScheme;
 }
 
+export interface HobbySection {
+  title: string;
+  items: {
+    name: string;
+    description?: string;
+    link?: string;
+  }[];
+}
 
+export interface HobbyDetails {
+  sections: HobbySection[];
+}
 
 export interface Hobby {
   title: string;
   description: string;
   media?: MediaItem[];
+  details?: HobbyDetails;
 }
 
 export interface HeroContent {
