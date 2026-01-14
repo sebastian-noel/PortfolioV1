@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { X, ExternalLink } from "lucide-react";
 import { type Hobby } from "@/types";
+import TypingTest from "./TypingTest";
 
 interface HobbyModalProps {
   hobby: Hobby;
@@ -13,6 +14,7 @@ interface HobbyModalProps {
 
 export default function HobbyModal({ hobby, isOpen, onClose }: HobbyModalProps) {
   const cover = hobby.media?.find((m) => m.type === "image");
+  const isHardwareHobby = hobby.title === "Computer Hardware & Peripherals";
 
   // Handle escape key and body scroll lock
   useEffect(() => {
@@ -129,6 +131,13 @@ export default function HobbyModal({ hobby, isOpen, onClose }: HobbyModalProps) 
                         </div>
                       ))}
                     </div>
+
+                    {/* Show Typing Test after Keyboard section */}
+                    {isHardwareHobby && section.title === "Keyboard" && (
+                      <div className="mt-4">
+                        <TypingTest />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
