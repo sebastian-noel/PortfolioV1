@@ -3,16 +3,16 @@ import { type Experience } from "@/types";
 export const experiences: Experience[] = [
   {
     company: "Bank of New York Mellon (BNY)",
-    role: "Applied Technology Intern",
+    role: "Software Engineer Intern",
     start: "January 2026",
     end: "Present",
     location: "Orlando, FL",
     description:
-      "Spring 2026 Applied Technology in Banking Experiential Intern at BNY's Client Technology and Operations Center.",
+      "Spring 2026 Software Engineer Intern at BNY's Client Technology and Operations Center.",
     achievements: [
-      "Spring 2026 Applied Technology in Banking Experiential Intern",
+      "Working on semester long app development project with Kai Sprunger, Carlos Catala, and Nicole Bustos",
     ],
-    technologies: ["Python", "SQL", "Cloud Computing"],
+    technologies: ["App Development", "Agile", "AI", "ML"],
     logo: "/images/experience/bny-logo.png",
     links: [
       { label: "Company Website", url: "https://www.bny.com/corporate/global/" },
@@ -83,7 +83,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Data-Enabled Photovoltaics",
-    role: "Software Engineering Intern",
+    role: "Software Engineer Intern",
     start: "June 2024",
     end: "August 2024",
     location: "Remote",

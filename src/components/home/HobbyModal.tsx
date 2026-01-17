@@ -51,7 +51,7 @@ export default function HobbyModal({ hobby, isOpen, onClose }: HobbyModalProps) 
 
       {/* Modal Content */}
       <div
-        className="relative z-10 flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl border border-accent bg-background shadow-2xl"
+        className="relative z-10 flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-accent bg-background shadow-2xl"
       >
         {/* Close Button */}
         <button
