@@ -211,6 +211,7 @@ export default function TypingTest() {
     // Tab to focus restart button (monkeytype style)
     if (e.key === "Tab") {
       e.preventDefault();
+      playSound("tab");
       restartButtonRef.current?.focus();
       return;
     }
@@ -321,15 +322,23 @@ export default function TypingTest() {
 
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h4 className="text-lg font-semibold text-foreground">Typing Challenge</h4>
+        <h4 className="text-lg font-semibold text-foreground">Challenge me to a Typing Speed Test!</h4>
         {soundsLoaded && (
-          <button
-            onClick={() => setSoundEnabled(!soundEnabled)}
-            className="p-2 rounded-lg text-foreground/60 hover:text-foreground hover:bg-secondary/30 transition-colors"
-            aria-label={soundEnabled ? "Mute sounds" : "Unmute sounds"}
-          >
-            {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-          </button>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-foreground/40 hidden sm:inline">Use my custom keyboard&apos;s sounds!</span>
+            <button
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              className={`p-2 rounded-lg transition-colors ${
+                soundEnabled
+                  ? "bg-accent/20 text-accent hover:bg-accent/30"
+                  : "bg-secondary/30 text-foreground/40 hover:text-foreground/60"
+              }`}
+              aria-label={soundEnabled ? "Mute sounds" : "Unmute sounds"}
+              tabIndex={-1}
+            >
+              {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+            </button>
+          </div>
         )}
       </div>
 
@@ -410,6 +419,11 @@ export default function TypingTest() {
             <button
               ref={restartButtonRef}
               onClick={resetTest}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  playSound("enter");
+                }
+              }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-foreground/50 hover:text-foreground hover:bg-secondary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:text-accent"
               tabIndex={-1}
             >
