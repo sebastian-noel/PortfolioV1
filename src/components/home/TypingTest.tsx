@@ -38,25 +38,33 @@ export default function TypingTest() {
     const loadSounds = async () => {
       try {
         audioContextRef.current = new AudioContext();
-        const soundTypes = ["keypress1", "keypress2", "keypress3", "space", "backspace"];
+        
+        // Define sound types with their folder and file patterns
+        const soundConfig = [
+          { type: "keystroke", folder: "keystrokes", prefix: "keystroke", count: 8 },
+          { type: "spacebar", folder: "spacebars", prefix: "spacebar", count: 4 },
+          { type: "backspace", folder: "backspaces", prefix: "backspace", count: 6 },
+          { type: "enter", folder: "enters", prefix: "enter", count: 2 },
+          { type: "tab", folder: "tabs", prefix: "tab", count: 7 },
+        ];
+        
         let loadedCount = 0;
 
-        for (const type of soundTypes) {
-          try {
-            const response = await fetch(`/sounds/keyboard/${type}.wav`);
-            if (!response.ok) continue;
-            
-            const arrayBuffer = await response.arrayBuffer();
-            const audioBuffer = await audioContextRef.current.decodeAudioData(arrayBuffer);
-
-            const baseType = type.replace(/\d+$/, "");
-            if (!audioBuffersRef.current[baseType]) {
-              audioBuffersRef.current[baseType] = [];
+        for (const config of soundConfig) {
+          audioBuffersRef.current[config.type] = [];
+          
+          for (let i = 1; i <= config.count; i++) {
+            try {
+              const response = await fetch(`/sounds/keyboard/${config.folder}/${config.prefix}${i}.wav`);
+              if (!response.ok) continue;
+              
+              const arrayBuffer = await response.arrayBuffer();
+              const audioBuffer = await audioContextRef.current.decodeAudioData(arrayBuffer);
+              audioBuffersRef.current[config.type].push(audioBuffer);
+              loadedCount++;
+            } catch {
+              // Sound file not found, skip silently
             }
-            audioBuffersRef.current[baseType].push(audioBuffer);
-            loadedCount++;
-          } catch {
-            // Sound file not found, skip silently
           }
         }
         
@@ -109,7 +117,7 @@ export default function TypingTest() {
   }, [isActive, startTime, isComplete, currentSentence.length]);
 
   const playSound = useCallback(
-    (type: "keypress" | "space" | "backspace") => {
+    (type: "keystroke" | "spacebar" | "backspace" | "enter" | "tab") => {
       if (!soundEnabled || !audioContextRef.current || !audioBuffersRef.current[type]?.length) return;
 
       // Resume audio context if it's suspended (browser autoplay policy)
@@ -214,11 +222,13 @@ export default function TypingTest() {
 
     // Play appropriate sound
     if (e.key === " ") {
-      playSound("space");
+      playSound("spacebar");
     } else if (e.key === "Backspace") {
       playSound("backspace");
+    } else if (e.key === "Enter") {
+      playSound("enter");
     } else if (e.key.length === 1) {
-      playSound("keypress");
+      playSound("keystroke");
     }
   };
 

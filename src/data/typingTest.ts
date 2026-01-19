@@ -1,6 +1,6 @@
 export const typingTestConfig = {
   // WPM to beat
-  yourWpm: 80,
+  yourWpm: 100,
 
   // Edit premade sentences 
   sentences: [
@@ -11,5 +11,11 @@ export const typingTestConfig = {
     "When I am not coding you can find me tweaking my keyboard or gaming setup.",
     "I believe that the right peripherals can transform your computing experience.",
     "There is something satisfying about a perfectly tuned mechanical keyboard.",
+
+    "the first hackathon i ever attended was knight hacks vii during my freshman year where i built dish dash",
+    "my favorite hackathon project i worked on was tidesense where i worked with stevin, nicole, and chris",
+    "i am one of the founding officers of graphics programming knights and currently serve as the secretary",
+    ""
+
   ],
 };

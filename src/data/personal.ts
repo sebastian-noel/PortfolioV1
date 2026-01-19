@@ -78,19 +78,21 @@ export const heroContent: HeroContent = {
           {
             title: "Monitor",
             items: [
-              { name: "Primary Monitor", description: "Placeholder Monitor" },
+              { name: "Primary Monitor", description: "LG 27GX700A-B 27", link: "https://www.lg.com/us/monitors/lg-27gx700a-b-gaming-monitor" },
             ],
           },
           {
             title: "Keyboard",
             items: [
-              { name: "Keyboard", description: "Placeholder Keyboard" },
+              { name: "Switches", description: "Akko Rosewood", link: "https://en.akkogear.com/product/akko-rosewood-switch/" },
+              { name: "Keycaps", description: "Keychron Double Shot PBT OSA Keycaps", link: "https://www.keychron.com/products/double-shot-pbt-osa-full-set-keycap-set?variant=40561987387481" },
+              { name: "Keyboard", description: "Monsgeek M1 V5 Via Rapid Disassembly", link: "https://www.monsgeek.com/product/m1-v5-via-rapid-disassembly/" },
             ],
           },
           {
             title: "Mouse",
             items: [
-              { name: "Mouse", description: "Placeholder Mouse" },
+              { name: "Mouse", description: "Razer Viper V3 Pro", link: "https://www.razer.com/gaming-mice/razer-viper-v3-pro" },
             ],
           },
         ],
