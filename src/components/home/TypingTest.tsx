@@ -32,6 +32,7 @@ export default function TypingTest() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioBuffersRef = useRef<{ [key: string]: AudioBuffer[] }>({});
   const ghostIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const tryAgainButtonRef = useRef<HTMLButtonElement>(null);
 
   // Load keyboard sounds
   useEffect(() => {
@@ -94,28 +95,6 @@ export default function TypingTest() {
     };
   }, []);
 
-  // Ghost cursor animation - simulates typing at your WPM
-  useEffect(() => {
-    if (isActive && startTime && !isComplete) {
-      // Calculate how many characters should be typed per millisecond at your WPM
-      // WPM = (chars / 5) / minutes => chars = WPM * 5 * minutes
-      // chars per ms = (WPM * 5) / (60 * 1000)
-      const charsPerMs = (typingTestConfig.yourWpm * 5) / (60 * 1000);
-
-      ghostIntervalRef.current = setInterval(() => {
-        const elapsed = Date.now() - startTime;
-        const ghostChars = Math.floor(elapsed * charsPerMs);
-        setGhostPosition(Math.min(ghostChars, currentSentence.length));
-      }, 50);
-
-      return () => {
-        if (ghostIntervalRef.current) {
-          clearInterval(ghostIntervalRef.current);
-        }
-      };
-    }
-  }, [isActive, startTime, isComplete, currentSentence.length]);
-
   const playSound = useCallback(
     (type: "keystroke" | "spacebar" | "backspace" | "enter" | "tab") => {
       if (!soundEnabled || !audioContextRef.current || !audioBuffersRef.current[type]?.length) return;
@@ -141,6 +120,47 @@ export default function TypingTest() {
     },
     [soundEnabled]
   );
+
+  // Ghost cursor animation - simulates typing at your WPM
+  useEffect(() => {
+    if (isActive && startTime && !isComplete) {
+      // Calculate how many characters should be typed per millisecond at your WPM
+      // WPM = (chars / 5) / minutes => chars = WPM * 5 * minutes
+      // chars per ms = (WPM * 5) / (60 * 1000)
+      const charsPerMs = (typingTestConfig.yourWpm * 5) / (60 * 1000);
+
+      ghostIntervalRef.current = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const ghostChars = Math.floor(elapsed * charsPerMs);
+        setGhostPosition(Math.min(ghostChars, currentSentence.length));
+      }, 50);
+
+      return () => {
+        if (ghostIntervalRef.current) {
+          clearInterval(ghostIntervalRef.current);
+        }
+      };
+    }
+  }, [isActive, startTime, isComplete, currentSentence.length]);
+
+  // Handle Tab key for Try Again button when test is complete
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (isComplete && e.key === "Tab") {
+        e.preventDefault();
+        playSound("tab");
+        tryAgainButtonRef.current?.focus();
+      }
+    };
+
+    if (isComplete) {
+      document.addEventListener("keydown", handleGlobalKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleGlobalKeyDown);
+    };
+  }, [isComplete, playSound]);
 
   const fetchGlobalStats = async () => {
     try {
@@ -414,51 +434,57 @@ export default function TypingTest() {
             )}
           </div>
 
-          {/* Restart button (Tab target) */}
-          <div className="flex justify-center">
-            <button
-              ref={restartButtonRef}
-              onClick={resetTest}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  playSound("enter");
-                }
-              }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-foreground/50 hover:text-foreground hover:bg-secondary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:text-accent"
-              tabIndex={-1}
-            >
-              <RotateCcw className="h-4 w-4" />
-              <span className="text-sm">Restart</span>
-            </button>
-          </div>
+          {/* Restart button (Tab target) - only show during active test */}
+          {!isComplete && (
+            <div className="flex justify-center">
+              <button
+                ref={restartButtonRef}
+                onClick={resetTest}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    playSound("enter");
+                  }
+                }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-foreground/50 hover:text-foreground hover:bg-secondary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:text-accent"
+                tabIndex={-1}
+              >
+                <RotateCcw className="h-4 w-4" />
+                <span className="text-sm">Restart</span>
+              </button>
+            </div>
+          )}
 
-          {/* Live Stats */}
-          <div className="flex justify-center gap-6 text-sm font-mono">
-            <div className="flex items-center gap-2">
-              <span className="text-foreground/50">WPM:</span>
-              <span className="text-accent font-semibold">{wpm}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-foreground/50">Accuracy:</span>
-              <span className="text-accent font-semibold">{accuracy}%</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-foreground/50">Ghost:</span>
-              <span className="text-accent/50 font-semibold">{typingTestConfig.yourWpm} WPM</span>
-            </div>
-          </div>
+          {/* Live Stats - only show during active test */}
+          {!isComplete && (
+            <>
+              <div className="flex justify-center gap-6 text-sm font-mono">
+                <div className="flex items-center gap-2">
+                  <span className="text-foreground/50">WPM:</span>
+                  <span className="text-accent font-semibold">{wpm}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-foreground/50">Accuracy:</span>
+                  <span className="text-accent font-semibold">{accuracy}%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-foreground/50">Ghost:</span>
+                  <span className="text-accent/50 font-semibold">{typingTestConfig.yourWpm} WPM</span>
+                </div>
+              </div>
 
-          {/* Legend */}
-          <div className="flex justify-center gap-4 text-xs text-foreground/40">
-            <div className="flex items-center gap-1">
-              <span className="w-2 h-4 bg-accent rounded-sm" />
-              <span>Your cursor</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="w-2 h-4 bg-accent/30 rounded-sm" />
-              <span>My ghost cursor</span>
-            </div>
-          </div>
+              {/* Legend */}
+              <div className="flex justify-center gap-4 text-xs text-foreground/40">
+                <div className="flex items-center gap-1">
+                  <span className="w-2 h-4 bg-accent rounded-sm" />
+                  <span>Your cursor</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-2 h-4 bg-accent/30 rounded-sm" />
+                  <span>My ghost cursor</span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
 
@@ -497,7 +523,13 @@ export default function TypingTest() {
             )}
             {won && <div className="mb-4" />}
             <button
+              ref={tryAgainButtonRef}
               onClick={startTest}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  playSound("enter");
+                }
+              }}
               className="inline-flex items-center gap-2 px-6 py-2 bg-accent/20 hover:bg-accent/30 rounded-lg text-accent font-medium transition-colors"
             >
               <RotateCcw className="h-4 w-4" />
