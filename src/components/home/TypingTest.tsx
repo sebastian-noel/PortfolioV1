@@ -394,7 +394,7 @@ export default function TypingTest() {
                   }`}
                 >
                   {/* Ghost cursor - your simulated typing speed */}
-                  {isGhostCursor && !isTyped && (
+                  {isGhostCursor && (
                     <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-accent/30 animate-pulse" />
                   )}
                   {/* User cursor */}
