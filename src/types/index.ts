@@ -94,6 +94,15 @@ export interface Hobby {
   details?: HobbyDetails;
 }
 
+export type SkillType = "Programming Languages" | "Frameworks/Libraries" | "Developer Tools";
+
+export interface TechnicalSkill {
+  name: string;
+  icon: string;
+  type: SkillType;
+  category?: string;
+}
+
 export interface HeroContent {
   name: string;
   title: string;
@@ -102,5 +111,6 @@ export interface HeroContent {
   headshot: string;
   carousel: MediaItem[];
   hobbies: Hobby[];
+  skills: TechnicalSkill[];
   social: SocialLinks;
 }

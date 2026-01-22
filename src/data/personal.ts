@@ -106,6 +106,39 @@ export const heroContent: HeroContent = {
       ],
     },
   ],
+  skills: [
+    // Programming Languages
+    { name: "Python", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "Java", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "TypeScript", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "JavaScript", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "C", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "C++", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "SQL", icon: "/placeholder.png", type: "Programming Languages" },
+    
+    // Frameworks/Libraries - Frontend
+    { name: "React", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
+    { name: "Next.js", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
+    { name: "TailwindCSS", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
+    
+    // Frameworks/Libraries - Backend
+    { name: "Node.js", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
+    { name: "Express", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
+    { name: "Django", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
+    
+    // Frameworks/Libraries - Database
+    { name: "PostgreSQL", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Database" },
+    { name: "MongoDB", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Database" },
+    { name: "Prisma", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Database" },
+    
+    // Developer Tools - DevOps
+    { name: "Git", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
+    { name: "Docker", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
+    { name: "GitHub", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
+    
+    // Developer Tools - Cloud
+    { name: "AWS", icon: "/placeholder.png", type: "Developer Tools", category: "Cloud" },
+  ],
   social: {
     github: "https://github.com/sebastian-noel",
     linkedin: "https://www.linkedin.com/in/sebastian-noel-ucf",
