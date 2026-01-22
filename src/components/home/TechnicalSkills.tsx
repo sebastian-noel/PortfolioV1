@@ -12,6 +12,28 @@ const SKILL_TYPE_ORDER: SkillType[] = [
   "Developer Tools",
 ];
 
+// Flatten all skills with their index for staggered animation
+function flattenSkillsWithIndex(
+  groupedSkills: Map<SkillType, Map<string, TechnicalSkill[]>>
+): { skill: TechnicalSkill; globalIndex: number }[] {
+  const result: { skill: TechnicalSkill; globalIndex: number }[] = [];
+  let index = 0;
+
+  SKILL_TYPE_ORDER.forEach((type) => {
+    const categoryMap = groupedSkills.get(type);
+    if (!categoryMap) return;
+
+    categoryMap.forEach((skills) => {
+      skills.forEach((skill) => {
+        result.push({ skill, globalIndex: index });
+        index++;
+      });
+    });
+  });
+
+  return result;
+}
+
 export default function TechnicalSkills() {
   const skills = heroContent.skills;
   const ref = useRef(null);
@@ -36,26 +58,28 @@ export default function TechnicalSkills() {
     return byType;
   }, [skills]);
 
+  // Get global indices for staggered animation
+  const skillIndices = useMemo(() => {
+    const flatList = flattenSkillsWithIndex(groupedSkills);
+    const indexMap = new Map<string, number>();
+    flatList.forEach(({ skill, globalIndex }) => {
+      indexMap.set(skill.name, globalIndex);
+    });
+    return indexMap;
+  }, [groupedSkills]);
+
   if (!skills?.length) return null;
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
 
   const sectionVariant = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -68,13 +92,7 @@ export default function TechnicalSkills() {
           </p>
         </div>
 
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          variants={container}
-          className="space-y-12"
-        >
+        <div ref={ref} className="space-y-12">
           {SKILL_TYPE_ORDER.map((type) => {
             const categoryMap = groupedSkills.get(type);
             if (!categoryMap) return null;
@@ -83,7 +101,13 @@ export default function TechnicalSkills() {
             const hasCategories = categories.some(([cat]) => cat !== "General");
 
             return (
-              <motion.div key={type} variants={sectionVariant} className="space-y-6">
+              <motion.div 
+                key={type} 
+                variants={sectionVariant}
+                initial="hidden"
+                animate={isInView ? "show" : "hidden"}
+                className="space-y-6"
+              >
                 {/* Type Header */}
                 <h3 className="text-xl font-semibold text-center text-primary">
                   {type}
@@ -97,27 +121,30 @@ export default function TechnicalSkills() {
                         key={category}
                         category={category}
                         skills={categorySkills}
-                        itemVariants={item}
+                        skillIndices={skillIndices}
+                        isInView={isInView}
                       />
                     ))}
                   </div>
                 ) : (
                   // Render without category sub-groups
-                  <motion.div
-                    variants={container}
-                    className="flex flex-wrap justify-center gap-4"
-                  >
+                  <div className="flex flex-wrap justify-center gap-4">
                     {categories.flatMap(([, categorySkills]) =>
                       categorySkills.map((skill) => (
-                        <SkillCard key={skill.name} skill={skill} variants={item} />
+                        <SkillCard 
+                          key={skill.name} 
+                          skill={skill} 
+                          index={skillIndices.get(skill.name) || 0}
+                          isInView={isInView}
+                        />
                       ))
                     )}
-                  </motion.div>
+                  </div>
                 )}
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -126,33 +153,81 @@ export default function TechnicalSkills() {
 function CategoryGroup({
   category,
   skills,
-  itemVariants,
+  skillIndices,
+  isInView,
 }: {
   category: string;
   skills: TechnicalSkill[];
-  itemVariants: { hidden: { opacity: number; y: number }; show: { opacity: number; y: number } };
+  skillIndices: Map<string, number>;
+  isInView: boolean;
 }) {
+  // Get the index of the first skill in this category to sync the animation
+  const firstSkillIndex = skillIndices.get(skills[0]?.name) || 0;
+  const baseDelay = firstSkillIndex * 0.2;
+
   return (
     <div className="flex flex-col items-center group/category">
       {/* Category label with bracket */}
       <div className="flex flex-col items-center mb-1 w-full">
-        <span className="text-xs font-medium text-accent uppercase tracking-wider px-2 transition-all duration-300 group-hover/category:text-primary group-hover/category:scale-105">
+        {/* Category title - appears first */}
+        <motion.span 
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: baseDelay + 1.0,
+            ease: "easeOut",
+          }}
+          className="text-xs font-medium text-accent uppercase tracking-wider px-2 transition-all duration-300 group-hover/category:text-primary group-hover/category:scale-105"
+        >
           {category}
-        </span>
-        {/* Bracket line that spans the full width */}
-        <div className="relative w-full mt-1 h-2">
-          {/* Horizontal top line */}
-          <div className="absolute top-0 left-2 right-2 h-0 border-t-2 border-accent/50 transition-all duration-300 group-hover/category:border-primary" />
-          {/* Left vertical leg */}
-          <div className="absolute top-0 left-2 w-0 h-full border-l-2 border-accent/50 transition-all duration-300 group-hover/category:border-primary" />
-          {/* Right vertical leg */}
-          <div className="absolute top-0 right-2 w-0 h-full border-r-2 border-accent/50 transition-all duration-300 group-hover/category:border-primary" />
+        </motion.span>
+        {/* Bracket line that spans the full width - reveals from center */}
+        <div className="relative w-full mt-1 h-3">
+          {/* Horizontal top line - scales from center */}
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{
+              duration: 0.5,
+              delay: baseDelay + 1.2,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+            className="absolute top-0 left-1 right-1 h-0 border-t-2 border-accent/50 origin-center transition-colors duration-300 group-hover/category:border-primary" 
+          />
+          {/* Left vertical leg - fades in after horizontal */}
+          <motion.div 
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+            transition={{
+              duration: 0.3,
+              delay: baseDelay + 1.4,
+              ease: "easeOut",
+            }}
+            className="absolute top-0 left-1 w-0 h-full border-l-2 border-accent/50 origin-top transition-colors duration-300 group-hover/category:border-primary" 
+          />
+          {/* Right vertical leg - fades in after horizontal */}
+          <motion.div 
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+            transition={{
+              duration: 0.3,
+              delay: baseDelay + 1.4,
+              ease: "easeOut",
+            }}
+            className="absolute top-0 right-1 w-0 h-full border-r-2 border-accent/50 origin-top transition-colors duration-300 group-hover/category:border-primary" 
+          />
         </div>
       </div>
       {/* Skills in this category */}
       <div className="flex flex-wrap justify-center gap-3 pt-1">
         {skills.map((skill) => (
-          <SkillCard key={skill.name} skill={skill} variants={itemVariants} />
+          <SkillCard 
+            key={skill.name} 
+            skill={skill} 
+            index={skillIndices.get(skill.name) || 0}
+            isInView={isInView}
+          />
         ))}
       </div>
     </div>
@@ -161,15 +236,23 @@ function CategoryGroup({
 
 function SkillCard({
   skill,
-  variants,
+  index,
+  isInView,
 }: {
   skill: TechnicalSkill;
-  variants: { hidden: { opacity: number; y: number }; show: { opacity: number; y: number } };
+  index: number;
+  isInView: boolean;
 }) {
   return (
     <motion.div
-      variants={variants}
-      className="flex flex-col items-center justify-center w-24 p-4 rounded-xl bg-secondary/20 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-secondary/30 cursor-pointer group"
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.2,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      className="flex flex-col items-center justify-center w-28 h-28 px-2 py-3 rounded-xl bg-secondary/20 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-secondary/30 cursor-pointer group"
     >
       <div className="relative w-12 h-12 mb-2 transition-transform duration-300 group-hover:scale-110">
         <Image

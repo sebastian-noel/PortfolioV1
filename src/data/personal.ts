@@ -110,34 +110,52 @@ export const heroContent: HeroContent = {
     // Programming Languages
     { name: "Python", icon: "/placeholder.png", type: "Programming Languages" },
     { name: "Java", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "C", icon: "/placeholder.png", type: "Programming Languages" },
     { name: "TypeScript", icon: "/placeholder.png", type: "Programming Languages" },
     { name: "JavaScript", icon: "/placeholder.png", type: "Programming Languages" },
-    { name: "C", icon: "/placeholder.png", type: "Programming Languages" },
-    { name: "C++", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "HTML", icon: "/placeholder.png", type: "Programming Languages" },
+    { name: "CSS", icon: "/placeholder.png", type: "Programming Languages" },
     { name: "SQL", icon: "/placeholder.png", type: "Programming Languages" },
     
     // Frameworks/Libraries - Frontend
     { name: "React", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
     { name: "Next.js", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
-    { name: "TailwindCSS", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
+    { name: "Tailwind CSS", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Frontend" },
     
     // Frameworks/Libraries - Backend
     { name: "Node.js", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
-    { name: "Express", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
-    { name: "Django", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
+    { name: "Flask", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
+    { name: "FastAPI", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Backend" },
     
-    // Frameworks/Libraries - Database
-    { name: "PostgreSQL", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Database" },
-    { name: "MongoDB", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Database" },
-    { name: "Prisma", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Database" },
+    // Frameworks/Libraries - Data Science
+    { name: "NumPy", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Data Science / Computer Vision" },
+    { name: "pandas", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Data Science / Computer Vision" },
+    { name: "Matplotlib", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Data Science / Computer Vision" },
+    { name: "YOLOv8", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Data Science / Computer Vision" },
+    { name: "SAM 3", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Data Science / Computer Vision" },
+    { name: "COCO", icon: "/placeholder.png", type: "Frameworks/Libraries", category: "Data Science / Computer Vision" },
     
     // Developer Tools - DevOps
     { name: "Git", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
-    { name: "Docker", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
     { name: "GitHub", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
+    { name: "Docker", icon: "/placeholder.png", type: "Developer Tools", category: "DevOps" },
+
+    // Developer Tools - Database
+    { name: "MongoDB", icon: "/placeholder.png", type: "Developer Tools", category: "Database" },
     
     // Developer Tools - Cloud
-    { name: "AWS", icon: "/placeholder.png", type: "Developer Tools", category: "Cloud" },
+    { name: "Google ADK", icon: "/placeholder.png", type: "Developer Tools", category: "Cloud" },
+    { name: "Vercel", icon: "/placeholder.png", type: "Developer Tools", category: "Cloud" },
+    
+    // Developer Tools - Development
+    { name: "Linux", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+    { name: "Windows", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+    { name: "VS Code", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+    { name: "IntelliJ", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+    { name: "PyCharm", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+    { name: "Jupyter", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+    { name: "Marimo", icon: "/placeholder.png", type: "Developer Tools", category: "Development" },
+
   ],
   social: {
     github: "https://github.com/sebastian-noel",
