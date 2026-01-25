@@ -88,7 +88,7 @@ export default function TechnicalSkills() {
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-2xl font-semibold">Technical Skills</h2>
           <p className="text-(--color-text)/75 max-w-2xl mx-auto">
-            A collection of technologies and tools I've worked with throughout my projects and experiences.
+            A collection of technologies and tools I&apos;ve worked with throughout my projects and experiences.
           </p>
         </div>
 
