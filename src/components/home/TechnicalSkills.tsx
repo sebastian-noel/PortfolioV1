@@ -76,9 +76,9 @@ export default function TechnicalSkills() {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+          duration: 0.45,
+          ease: "easeOut",
+        },
     },
   };
 
@@ -163,7 +163,7 @@ function CategoryGroup({
 }) {
   // Get the index of the first skill in this category to sync the animation
   const firstSkillIndex = skillIndices.get(skills[0]?.name) || 0;
-  const baseDelay = firstSkillIndex * 0.2;
+  const baseDelay = firstSkillIndex * 0.12;
 
   return (
     <div className="flex flex-col items-center group/category">
@@ -174,8 +174,8 @@ function CategoryGroup({
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{
-            duration: 0.4,
-            delay: baseDelay + 1.0,
+            duration: 0.38,
+            delay: baseDelay + 0.8,
             ease: "easeOut",
           }}
           className="text-xs font-medium text-accent uppercase tracking-wider px-2 transition-all duration-300 group-hover/category:text-primary group-hover/category:scale-105"
@@ -189,8 +189,8 @@ function CategoryGroup({
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{
-              duration: 0.5,
-              delay: baseDelay + 1.2,
+              duration: 0.45,
+              delay: baseDelay + 0.9,
               ease: [0.25, 0.1, 0.25, 1],
             }}
             className="absolute top-0 left-1 right-1 h-0 border-t-2 border-accent/50 origin-center transition-colors duration-300 group-hover/category:border-primary" 
@@ -200,8 +200,8 @@ function CategoryGroup({
             initial={{ opacity: 0, scaleY: 0 }}
             animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
             transition={{
-              duration: 0.3,
-              delay: baseDelay + 1.4,
+              duration: 0.30,
+              delay: baseDelay + 1.0,
               ease: "easeOut",
             }}
             className="absolute top-0 left-1 w-0 h-full border-l-2 border-accent/50 origin-top transition-colors duration-300 group-hover/category:border-primary" 
@@ -211,8 +211,8 @@ function CategoryGroup({
             initial={{ opacity: 0, scaleY: 0 }}
             animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
             transition={{
-              duration: 0.3,
-              delay: baseDelay + 1.4,
+              duration: 0.30,
+              delay: baseDelay + 1.0,
               ease: "easeOut",
             }}
             className="absolute top-0 right-1 w-0 h-full border-r-2 border-accent/50 origin-top transition-colors duration-300 group-hover/category:border-primary" 
@@ -247,9 +247,9 @@ function SkillCard({
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.2,
+        transition={{
+        duration: 0.36,
+        delay: index * 0.12,
         ease: [0.25, 0.1, 0.25, 1],
       }}
       className="flex flex-col items-center justify-center w-28 h-28 px-2 py-3 rounded-xl bg-secondary/20 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:bg-secondary/30 cursor-pointer group"

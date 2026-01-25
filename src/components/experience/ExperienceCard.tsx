@@ -48,7 +48,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
     <div className="relative pb-10 last:pb-0">
       {/* Timeline - positioned absolutely on the left */}
-      <div className="hidden md:flex absolute -left-4 top-0 items-start gap-2">
+      <div className="hidden md:flex absolute -left-[31px] top-0 items-start gap-2">
         {/* Date */}
         <div className="flex flex-col items-end w-28 pt-6 whitespace-nowrap pr-1">
           <span className="text-sm font-medium" style={{ color: primary }}>{start}</span>
@@ -56,8 +56,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
           <span className="text-sm font-medium" style={{ color: primary }}>{end}</span>
         </div>
         {/* Dot only - the line is continuous in the parent */}
-        <div className="flex flex-col items-center ml-px">
-          <div className="w-3 h-3 rounded-full shrink-0 mt-2" style={{ backgroundColor: primary }} />
+        <div className="flex flex-col items-center ml-2">
+          <div className="w-3 h-3 rounded-full shrink-0 mt-1 -translate-x-1.5 transform" style={{ backgroundColor: primary }} />
         </div>
       </div>
 

@@ -16,43 +16,49 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const { social } = heroContent;
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
-      <div className="bg-background/30 backdrop-blur-[2px] rounded-full border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.15)] px-6 sm:px-8 lg:px-10">
-        <div className="flex justify-between items-center h-14">
-          {/* Logo with gradient */}
-          <Link 
-            href="/" 
-            className="relative group text-2xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
-          >
-            <span className="relative">
-              SN
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
-            </span>
-          </Link>
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[99%] max-w-[1400px]">
+      <div className="bg-background/30 backdrop-blur-[4px] rounded-full border border-white/10 shadow-[0_0_30px_rgba(255,255,255,0.15)] px-6 sm:px-8 lg:px-10">
+        <div className="flex md:grid md:grid-cols-3 justify-between items-center h-14">
+          {/* Logo with gradient - Desktop only */}
+          <div className="hidden md:block">
+            <Link 
+              href="/" 
+              className="relative group inline-block text-2xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+            >
+              <span className="relative">
+                SN
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation Links - Center */}
-          <div className="hidden md:flex items-center gap-2 bg-secondary/50 rounded-full px-2 py-2 backdrop-blur-sm">
+          <div className="flex md:items-center md:justify-center gap-4 md:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300',
+                  'relative group font-medium transition-all duration-300',
                   pathname === link.href
-                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                    ? 'text-base md:text-lg text-primary md:scale-115'
+                    : 'text-sm md:text-base text-muted-foreground hover:text-foreground'
                 )}
               >
                 {link.label}
+                {pathname === link.href ? (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent"></span>
+                ) : (
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300"></span>
+                )}
               </Link>
             ))}
           </div>
 
-          {/* Social Links - Right (Desktop) */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Social Links - Right */}
+          <div className="flex items-center justify-end gap-2 md:gap-3">
             {[
               { href: social.github, icon: Github, label: 'GitHub' },
               { href: social.linkedin, icon: Linkedin, label: 'LinkedIn' },
@@ -66,62 +72,12 @@ export default function Navbar() {
                 className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-300 hover:scale-110"
                 aria-label={label}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5 md:h-6 md:w-6" />
               </a>
             ))}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-secondary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden mt-2 rounded-3xl border border-white/10 bg-background/30 backdrop-blur-[2px] shadow-[0_0_30px_rgba(255,255,255,0.15)] overflow-hidden">
-          <div className="px-6 py-4 space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300',
-                  pathname === link.href
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-foreground hover:bg-secondary'
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="flex items-center gap-4 pt-4 border-t border-border/40">
-              {[
-                { href: social.github, icon: Github, label: 'GitHub' },
-                { href: social.linkedin, icon: Linkedin, label: 'LinkedIn' },
-                { href: social.resume, icon: FileText, label: 'Resume' }
-              ].map(({ href, icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-300"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }

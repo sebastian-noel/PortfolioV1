@@ -1,40 +1,28 @@
-import { Github, Linkedin, FileText } from 'lucide-react';
+'use client';
+
+import { ArrowUp } from 'lucide-react';
 import { heroContent } from '@/data';
 
-const socialIcons = {
-  github: Github,
-  linkedin: Linkedin,
-  resume: FileText,
-};
-
 export default function Footer() {
-  return (
-    <footer className="border-t border-secondary bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col items-center space-y-4">
-          {/* Social Links */}
-          <div className="flex space-x-6">
-            {Object.entries(heroContent.social).map(([key, url]) => {
-              const Icon = socialIcons[key as keyof typeof socialIcons];
-              if (!Icon) return null;
-              return (
-                <a
-                  key={key}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-accent transition-colors"
-                  aria-label={key}
-                >
-                  <Icon className="w-6 h-6" />
-                </a>
-              );
-            })}
-          </div>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
+  return (
+    <footer className="relative bg-background/50 backdrop-blur-sm border-t border-white/10 overflow-visible shadow-[0_-8px_16px_rgba(255,255,255,0.09)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col items-center justify-center gap-2">
+          {/* Scroll to Top Button */}
+          <button
+            onClick={scrollToTop}
+            className="group text-muted-foreground transition-all duration-300"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="h-6 w-6 group-hover:text-primary group-hover:scale-125 transition-all duration-300" />
+          </button>
           {/* Copyright */}
-          <p className="text-sm text-(--color-text)/80">
-            © {new Date().getFullYear()} {heroContent.name}. All rights reserved.
+          <p className="text-sm text-muted-foreground text-center">
+            © {new Date().getFullYear()} Sebastian Noel. All rights reserved.
           </p>
         </div>
       </div>
