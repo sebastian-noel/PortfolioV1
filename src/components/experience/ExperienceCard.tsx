@@ -61,19 +61,40 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         </div>
       </div>
 
+      {/* Mobile date display - above the card */}
+      <div className="md:hidden flex flex-col items-center gap-1 mb-3">
+        <div className="flex items-center gap-2 text-sm" style={{ color: primary }}>
+          <span className="font-medium">{start}</span>
+          <span className="text-(--color-text)/60">-</span>
+          <span className="font-medium">{end}</span>
+        </div>
+        {/* Mobile location - below dates */}
+        <div className="flex items-center gap-1.5 text-xs text-(--color-text)/70">
+          <MapPin className="h-3 w-3" />
+          <span>{location}</span>
+        </div>
+      </div>
+
       {/* Main card - centered with equal padding on both sides */}
       <div 
-        className="relative md:ml-32 md:mr-32 rounded-3xl p-8 shadow-sm transition-all duration-300 hover:shadow-lg border"
+        className="relative md:ml-32 md:mr-32 rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 hover:scale-[1.01] border group"
         style={{
           backgroundColor: `${secondary}26`,
           borderColor: techBg,
+          boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         }}
-        onMouseEnter={(e) => e.currentTarget.style.borderColor = primary}
-        onMouseLeave={(e) => e.currentTarget.style.borderColor = techBg}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = primary;
+          e.currentTarget.style.boxShadow = `0 25px 50px -12px ${primary}33`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = techBg;
+          e.currentTarget.style.boxShadow = '0 1px 2px 0 rgb(0 0 0 / 0.05)';
+        }}
       >
         {/* Logo - absolute positioned in top right */}
         {logo && (
-          <div className="absolute top-6 right-6 w-24 h-24 shrink-0 overflow-hidden rounded-xl">
+          <div className="absolute top-6 right-6 w-12 h-12 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-xl">
             <Image
               src={logo}
               alt={`${company} logo`}
@@ -83,33 +104,26 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
           </div>
         )}
 
-        {/* Mobile date display */}
-        <div className="md:hidden flex items-center gap-2 text-sm mb-6" style={{ color: primary }}>
-          <span>{start}</span>
-          <span className="text-(--color-text)/60">-</span>
-          <span>{end}</span>
-        </div>
-
         {/* Role */}
         <h3 
-          className="text-2xl font-bold mb-2 pr-28"
+          className="text-xl md:text-2xl font-bold mb-2 pr-16 md:pr-28"
           style={{ color: primary }}
         >
           {role}
         </h3>
 
         {/* Company name */}
-        <p className="text-xl mb-2" style={{ color: primary }}>{company}</p>
+        <p className="text-base md:text-xl mb-2 md:mb-2" style={{ color: primary }}>{company}</p>
 
-        {/* Location */}
-        <div className="flex items-center gap-1.5 text-sm text-(--color-text)/70 mb-6">
+        {/* Location - desktop only */}
+        <div className="hidden md:flex items-center gap-1.5 text-sm text-(--color-text)/70 mb-6">
           <MapPin className="h-4 w-4" />
           <span>{location}</span>
         </div>
 
         {/* Full-width Image carousel */}
         {images.length > 0 && (
-          <div className="relative w-full mb-6">
+          <div className="relative w-full mb-6 md:mb-6 mt-4 md:mt-0">
             <div className="relative aspect-video overflow-hidden rounded-2xl bg-background">
               <Image
                 src={images[currentImageIndex].src}
@@ -159,7 +173,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         )}
 
         {/* Description */}
-        <p className="text-lg text-(--color-text)/85 leading-relaxed mb-5">{description}</p>
+        <p className="text-base md:text-lg text-(--color-text)/85 leading-relaxed mb-5">{description}</p>
 
         {/* Technologies */}
         {technologies.length > 0 && (
